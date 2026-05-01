@@ -20,8 +20,18 @@ function App() {
   const [activeModule, setActiveModule] = useState<ModuleType>('home');
   const { xp, completedHtml, completedLinux, completedCss, completedJs, completeStep, resetProgress } = useProgress();
 
+  const isHtmlDone = completedHtml.length >= 5;
+
   const handleHomeClick = () => setActiveModule('home');
-  const handleNavigate = (module: ModuleType) => setActiveModule(module);
+
+  const handleNavigate = (module: ModuleType) => {
+    if ((module === 'css' || module === 'js') && !isHtmlDone) {
+      alert('Selesaikan setidaknya 5 misi HTML untuk membuka modul ini!');
+      setActiveModule('home');
+      return;
+    }
+    setActiveModule(module);
+  };
 
   if (loading) {
     return (
@@ -36,12 +46,16 @@ function App() {
   return (
     <div className="min-h-screen pb-32 overflow-x-hidden selection:bg-indigo-100 selection:text-indigo-900">
       <Header xp={xp} onHomeClick={handleHomeClick} onResetProgress={resetProgress} />
-      <Navbar activeModule={activeModule} setActiveModule={setActiveModule} />
+      <Navbar 
+        activeModule={activeModule} 
+        setActiveModule={handleNavigate} 
+        isHtmlDone={isHtmlDone}
+      />
 
       <main className="max-w-7xl mx-auto px-6 pt-24">
         {activeModule === 'home' && (
           <Home 
-            setActiveModule={setActiveModule} 
+            setActiveModule={handleNavigate} 
             xp={xp} 
             completedHtml={completedHtml} 
             completedLinux={completedLinux}
