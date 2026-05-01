@@ -13,12 +13,15 @@ import { useProgress } from './hooks/useProgress';
 import { auth } from './lib/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
+import { useToast } from './components/Toast';
+
 type ModuleType = 'home' | 'html' | 'linux' | 'css' | 'js';
 
 function App() {
   const [user, loading] = useAuthState(auth);
   const [activeModule, setActiveModule] = useState<ModuleType>('home');
   const { xp, completedHtml, completedLinux, completedCss, completedJs, completeStep, resetProgress } = useProgress();
+  const { showToast } = useToast();
 
   const isHtmlDone = completedHtml.length >= 5;
 
@@ -26,7 +29,7 @@ function App() {
 
   const handleNavigate = (module: ModuleType) => {
     if ((module === 'css' || module === 'js') && !isHtmlDone) {
-      alert('Selesaikan setidaknya 5 misi HTML untuk membuka modul ini!');
+      showToast('warning', 'Akses Terkunci', 'Selesaikan setidaknya 5 misi HTML untuk membuka modul ini!');
       setActiveModule('home');
       return;
     }

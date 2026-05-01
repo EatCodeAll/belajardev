@@ -86,11 +86,9 @@ export const useProgress = () => {
   };
 
   const resetProgress = () => {
-    if (confirm('Hapus semua progres?')) {
-      setCompletedHtml([]); setCompletedLinux([]); setCompletedCss([]); setCompletedJs([]);
-      localStorage.clear();
-      if (user) setDoc(doc(db, 'users', user.uid), { completedHtml: [], completedLinux: [], completedCss: [], completedJs: [] });
-    }
+    setCompletedHtml([]); setCompletedLinux([]); setCompletedCss([]); setCompletedJs([]);
+    localStorage.clear();
+    if (user) setDoc(doc(db, 'users', user.uid), { completedHtml: [], completedLinux: [], completedCss: [], completedJs: [] });
   };
 
   return { xp, completedHtml, completedLinux, completedCss, completedJs, completeStep, resetProgress };

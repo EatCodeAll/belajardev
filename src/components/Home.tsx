@@ -14,6 +14,18 @@ interface HomeProps {
 const Home: React.FC<HomeProps> = ({ setActiveModule, xp, completedHtml, completedLinux, completedCss, completedJs }) => {
   const [proModalOpen, setProModalOpen] = useState(false);
   const [selectedProModule, setSelectedProModule] = useState('');
+  const [displayText, setDisplayText] = useState('');
+  const fullText = 'Pilih Jalur Belajarmu.';
+
+  React.useEffect(() => {
+    let i = 0;
+    const timer = setInterval(() => {
+      setDisplayText(fullText.slice(0, i + 1));
+      i++;
+      if (i >= fullText.length) clearInterval(timer);
+    }, 100);
+    return () => clearInterval(timer);
+  }, []);
 
   const totalSteps = 40 + 2 + 2; // Total of all current free modules
   const completedSteps = completedHtml.length + completedLinux.length + completedCss.length + completedJs.length;
@@ -109,8 +121,8 @@ const Home: React.FC<HomeProps> = ({ setActiveModule, xp, completedHtml, complet
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-slate-50 text-slate-900 rounded-full text-[10px] font-black mb-6 border border-slate-100 uppercase tracking-widest">
              <Target size={12} className="text-emerald-500" /> Learning Dashboard
           </div>
-          <h1 className="text-4xl md:text-5xl font-black tracking-tight text-slate-900 mb-6 leading-tight">
-            Pilih Jalur Belajarmu.
+          <h1 className="text-4xl md:text-5xl font-black tracking-tight text-slate-900 mb-6 leading-tight min-h-[1.2em]">
+            {displayText}<span className="inline-block w-1 h-8 md:h-10 bg-slate-900 ml-1 animate-pulse" />
           </h1>
         </div>
 
