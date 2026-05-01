@@ -106,18 +106,17 @@ export const HTML_CONTENT: LearningStep[] = [
     title: "Daftar Berurutan (Ordered List)",
     materi: {
       paragraphs: [
-        "Jika urutan itu sangat penting (seperti tutorial atau resep), gunakan <ol> (Ordered List).",
-        "Elemen ini akan otomatis memberikan penomoran (1, 2, 3...) di depan setiap item.",
-        "Sama seperti <ul>, setiap butir daftar harus dibungkus dengan tag <li> (List Item)."
+        "Jika urutan itu sangat penting, gunakan <ol> (Ordered List).",
+        "Elemen ini akan otomatis memberikan penomoran (1, 2, 3...) di depan setiap item."
       ],
-      codeExample: "<ol>\n  <li>Langkah Pertama</li>\n  <li>Langkah Kedua</li>\n</ol>"
+      codeExample: "<ol>\n  <li>Langkah Satu</li>\n</ol>"
     },
     quest: {
       instruction: "Buatlah daftar berurutan <ol> dan tambahkan satu item <li> dengan teks 'Langkah 1'.",
       xp: 150,
       explanation: { 
-        "<ol>": "Ordered List, wadah untuk daftar yang memiliki urutan nomor.",
-        "<li>": "List Item, elemen wajib untuk setiap butir di dalam daftar."
+        "<ol>": "Ordered List, wadah untuk daftar bernomor.",
+        "<li>": "List Item, elemen untuk setiap butir daftar."
       },
       initialCode: `<html>\n  <body>\n    <!-- Buat daftar berurutan di bawah ini -->\n\n  </body>\n</html>`,
       validation: (code: string) => /<ol>\s*<li.*>.*Langkah 1.*<\/li>\s*<\/ol>/i.test(code)
@@ -128,19 +127,15 @@ export const HTML_CONTENT: LearningStep[] = [
     title: "Menampilkan Gambar",
     materi: {
       paragraphs: [
-        "Untuk menampilkan visual, kita menggunakan tag <img>. Tag ini unik karena 'Self-Closing' (tidak butuh tag penutup).",
-        "Ada dua atribut wajib: 'src' (alamat gambar) dan 'alt' (deskripsi gambar untuk mesin pencari dan pembaca layar disabilitas).",
-        "Contoh: <img src='foto.jpg' alt='Deskripsi Foto'>"
+        "Gunakan tag <img> untuk visual. Tag ini unik karena 'Self-Closing'.",
+        "Atribut 'src' adalah alamat gambar, dan 'alt' adalah teks alternatif."
       ],
-      codeExample: '<img src="https://bit.ly/3kS4N" alt="Logo">'
+      codeExample: '<img src="https://picsum.photos/200" alt="Foto">'
     },
     quest: {
-      instruction: "Tampilkan sebuah gambar menggunakan src 'https://picsum.photos/200' dan alt 'Random Image'.",
+      instruction: "Tampilkan gambar dengan src 'https://picsum.photos/200' dan alt 'Random Image'.",
       xp: 180,
-      explanation: { 
-        "src": "Source, alamat URL atau lokasi file gambar kamu.",
-        "alt": "Alternative text, teks yang muncul jika gambar gagal dimuat."
-      },
+      explanation: { "src": "Source alamat gambar.", "alt": "Teks deskripsi gambar." },
       initialCode: `<html>\n  <body>\n    <!-- Tambahkan tag img di bawah ini -->\n\n  </body>\n</html>`,
       validation: (code: string) => /<img.*src="https:\/\/picsum\.photos\/200".*alt="Random Image"/i.test(code)
     }
@@ -150,19 +145,15 @@ export const HTML_CONTENT: LearningStep[] = [
     title: "Tautan (Hyperlinks)",
     materi: {
       paragraphs: [
-        "Link adalah inti dari internet. Kita membuatnya menggunakan tag <a> (Anchor).",
-        "Gunakan atribut 'href' untuk menentukan ke mana user akan pergi saat mengklik link tersebut.",
-        "Apapun yang ada di antara <a> dan </a> akan menjadi bagian yang bisa diklik."
+        "Tautan dibuat menggunakan tag <a>.",
+        "Gunakan atribut 'href' untuk menentukan alamat tujuan link."
       ],
-      codeExample: '<a href="https://google.com">Klik ke Google</a>'
+      codeExample: '<a href="https://google.com">Google</a>'
     },
     quest: {
-      instruction: "Buat link yang mengarah ke 'https://github.com' dengan teks klik 'Profil Saya'.",
+      instruction: "Buat link ke 'https://github.com' dengan teks 'Profil Saya'.",
       xp: 160,
-      explanation: { 
-        "<a>": "Anchor tag, elemen untuk membuat tautan.",
-        "href": "Hyperlink Reference, atribut untuk menyimpan alamat tujuan."
-      },
+      explanation: { "<a>": "Anchor tag.", "href": "Alamat tujuan link." },
       initialCode: `<html>\n  <body>\n    <!-- Buat link ke Github di bawah ini -->\n\n  </body>\n</html>`,
       validation: (code: string) => /<a.*href="https:\/\/github\.com".*>.*Profil Saya.*<\/a>/i.test(code)
     }
@@ -171,42 +162,29 @@ export const HTML_CONTENT: LearningStep[] = [
     id: 9,
     title: "Input Teks Dasar",
     materi: {
-      paragraphs: [
-        "Untuk membuat formulir atau fitur login, kita butuh elemen <input>.",
-        "Atribut `type='text'` akan membuat kotak ketik satu baris.",
-        "Gunakan atribut `placeholder` untuk memberikan teks petunjuk di dalam kotak sebelum user mengetik."
-      ],
-      codeExample: '<input type="text" placeholder="Ketik nama...">'
+      paragraphs: ["Gunakan <input type='text'> untuk kotak ketik satu baris."],
+      codeExample: '<input type="text" placeholder="Nama">'
     },
     quest: {
       instruction: "Buatlah input teks dengan placeholder 'Username'.",
       xp: 140,
-      explanation: { 
-        "<input>": "Elemen input mandiri (self-closing).",
-        "placeholder": "Teks bantuan sementara di dalam input."
-      },
-      initialCode: `<html>\n  <body>\n    <p>Silakan Masuk:</p>\n    <!-- Tambahkan input username di sini -->\n\n  </body>\n</html>`,
+      explanation: { "placeholder": "Teks bantuan di dalam kotak input." },
+      initialCode: `<html>\n  <body>\n    <p>Masuk:</p>\n    <!-- Tambahkan input di sini -->\n\n  </body>\n</html>`,
       validation: (code: string) => /<input.*type="text".*placeholder="Username"/i.test(code)
     }
   },
   {
     id: 10,
-    title: "Membuat Tombol (Button)",
+    title: "Membuat Tombol",
     materi: {
-      paragraphs: [
-        "Tombol digunakan untuk memicu aksi, seperti mengirim data atau membuka jendela baru.",
-        "Kita menggunakan tag <button>. Apapun teks di dalamnya akan muncul di atas tombol.",
-        "Tag ini membutuhkan penutup </button>."
-      ],
-      codeExample: "<button>Submit Sekarang</button>"
+      paragraphs: ["Gunakan tag <button> untuk membuat tombol yang bisa diklik."],
+      codeExample: "<button>Kirim</button>"
     },
     quest: {
       instruction: "Tambahkan sebuah tombol dengan teks 'Kirim'.",
       xp: 120,
-      explanation: { 
-        "<button>": "Tag untuk membuat tombol interaktif."
-      },
-      initialCode: `<html>\n  <body>\n    <input type="text">\n    <!-- Tambahkan tombol kirim di bawah input -->\n\n  </body>\n</html>`,
+      explanation: { "<button>": "Tag tombol interaktif." },
+      initialCode: `<html>\n  <body>\n    <input type="text">\n    <!-- Tambahkan tombol di sini -->\n\n  </body>\n</html>`,
       validation: (code: string) => /<button.*>.*Kirim.*<\/button>/i.test(code)
     }
   },
@@ -214,20 +192,14 @@ export const HTML_CONTENT: LearningStep[] = [
     id: 11,
     title: "Wadah Konten (Div)",
     materi: {
-      paragraphs: [
-        "Elemen <div> (Division) adalah wadah paling populer di dunia web.",
-        "Ia tidak memiliki efek visual secara langsung, namun sangat berguna untuk mengelompokkan elemen agar mudah diatur tata letaknya nanti.",
-        "Gunakan <div> jika kamu ingin membungkus beberapa elemen menjadi satu kesatuan."
-      ],
-      codeExample: "<div>\n  <h3>Grup Judul</h3>\n  <p>Grup Deskripsi</p>\n</div>"
+      paragraphs: ["Elemen <div> adalah wadah paling populer untuk mengelompokkan elemen."],
+      codeExample: "<div>\n  <p>Grup</p>\n</div>"
     },
     quest: {
-      instruction: "Bungkus elemen h2 'Card Title' dan p 'Card Text' yang sudah ada di bawah menggunakan tag <div>.",
+      instruction: "Bungkus h2 'Card Title' dan p 'Card Text' menggunakan tag <div>.",
       xp: 150,
-      explanation: { 
-        "<div>": "Generic Container, digunakan sebagai blok pembungkus."
-      },
-      initialCode: `<html>\n  <body>\n    <!-- Bungkus dua elemen di bawah ini dengan div -->\n    <h2>Card Title</h2>\n    <p>Card Text</p>\n  </body>\n</html>`,
+      explanation: { "<div>": "Wadah generik pembungkus." },
+      initialCode: `<html>\n  <body>\n    <!-- Bungkus elemen di bawah dengan div -->\n    <h2>Card Title</h2>\n    <p>Card Text</p>\n  </body>\n</html>`,
       validation: (code: string) => /<div>\s*<h2.*>.*<\/h2>\s*<p.*>.*<\/p>\s*<\/div>/i.test(code)
     }
   },
@@ -235,19 +207,13 @@ export const HTML_CONTENT: LearningStep[] = [
     id: 12,
     title: "Sentuhan Inline (Span)",
     materi: {
-      paragraphs: [
-        "Jika <div> membungkus satu blok besar, <span> digunakan untuk membungkus potongan kecil teks di dalam sebuah kalimat.",
-        "Ini sangat berguna jika kamu ingin memberi warna berbeda hanya pada satu kata di tengah paragraf.",
-        "<span> bersifat 'inline', artinya ia tidak akan membuat baris baru."
-      ],
-      codeExample: "<p>Status: <span>Aktif</span></p>"
+      paragraphs: ["<span> digunakan untuk membungkus potongan kecil teks di dalam kalimat."],
+      codeExample: "<p>Halo <span>User</span></p>"
     },
     quest: {
-      instruction: "Bungkus kata 'Gratis' di dalam paragraf menggunakan tag <span>.",
+      instruction: "Bungkus kata 'Gratis' menggunakan tag <span>.",
       xp: 130,
-      explanation: { 
-        "<span>": "Inline container untuk memformat bagian kecil dari teks."
-      },
+      explanation: { "<span>": "Wadah teks inline." },
       initialCode: `<html>\n  <body>\n    <p>Layanan ini Gratis selamanya.</p>\n  </body>\n</html>`,
       validation: (code: string) => /<span>.*Gratis.*<\/span>/i.test(code)
     }
@@ -256,79 +222,59 @@ export const HTML_CONTENT: LearningStep[] = [
     id: 13,
     title: "Input Khusus Email",
     materi: {
-      paragraphs: [
-        "HTML5 menyediakan input khusus untuk alamat email menggunakan `type='email'`.",
-        "Keuntungannya: Browser di HP akan otomatis memunculkan tombol '@' di keyboard, dan browser akan memvalidasi jika user lupa memasukkan simbol '.' atau '@'."
-      ],
-      codeExample: '<input type="email" placeholder="nama@email.com">'
+      paragraphs: ["Gunakan `type='email'` untuk input alamat email yang valid."],
+      codeExample: '<input type="email">'
     },
     quest: {
       instruction: "Buatlah satu elemen input dengan type 'email'.",
       xp: 140,
-      explanation: { 
-        "type='email'": "Input yang divalidasi secara otomatis sebagai format email."
-      },
-      initialCode: `<html>\n  <body>\n    <p>Email Anda:</p>\n    <!-- Tambahkan input email di bawah ini -->\n\n  </body>\n</html>`,
+      explanation: { "type='email'": "Validasi email otomatis." },
+      initialCode: `<html>\n  <body>\n    <p>Email:</p>\n    <!-- Input email di sini -->\n\n  </body>\n</html>`,
       validation: (code: string) => /<input.*type="email"/i.test(code)
     }
   },
   {
     id: 14,
-    title: "Rahasia Terjamin (Password)",
+    title: "Input Password",
     materi: {
-      paragraphs: [
-        "Keamanan user sangat penting. Gunakan `type='password'` agar karakter yang diketik user disamarkan menjadi titik atau bintang.",
-        "Ini mencegah orang di sekitar user mengintip kata sandi mereka."
-      ],
+      paragraphs: ["Gunakan `type='password'` agar karakter yang diketik user disamarkan."],
       codeExample: '<input type="password">'
     },
     quest: {
-      instruction: "Tambahkan input dengan type 'password' untuk kolom kata sandi.",
+      instruction: "Tambahkan input dengan type 'password'.",
       xp: 140,
-      explanation: { 
-        "type='password'": "Input yang menyembunyikan teks demi keamanan."
-      },
-      initialCode: `<html>\n  <body>\n    <p>Password:</p>\n    <!-- Tambahkan input password di bawah ini -->\n\n  </body>\n</html>`,
+      explanation: { "type='password'": "Menyembunyikan teks input." },
+      initialCode: `<html>\n  <body>\n    <p>Sandi:</p>\n    <!-- Input sandi di sini -->\n\n  </body>\n</html>`,
       validation: (code: string) => /<input.*type="password"/i.test(code)
     }
   },
   {
     id: 15,
-    title: "Kotak Centang (Checkboxes)",
+    title: "Checkboxes",
     materi: {
-      paragraphs: [
-        "Checkbox memungkinkan pengguna untuk memilih satu atau banyak opsi dari daftar yang tersedia.",
-        "Gunakan `type='checkbox'` untuk membuatnya. Kamu bisa menambahkan teks di sampingnya sebagai label."
-      ],
-      codeExample: '<input type="checkbox"> Langganan Newsletter'
+      paragraphs: ["Checkbox memungkinkan pengguna untuk memilih satu atau banyak opsi."],
+      codeExample: '<input type="checkbox"> Pilihan'
     },
     quest: {
       instruction: "Buat sebuah checkbox yang diikuti teks 'Ingat Saya'.",
       xp: 130,
-      explanation: { 
-        "checkbox": "Input kotak centang untuk pilihan jamak."
-      },
-      initialCode: `<html>\n  <body>\n    <!-- Buat checkbox dan teks di sini -->\n\n  </body>\n</html>`,
+      explanation: { "checkbox": "Input centang." },
+      initialCode: `<html>\n  <body>\n    <!-- Checkbox di sini -->\n\n  </body>\n</html>`,
       validation: (code: string) => /<input.*type="checkbox"/i.test(code)
     }
   },
   {
     id: 16,
-    title: "Pesan Panjang (Textarea)",
+    title: "Area Teks (Textarea)",
     materi: {
-      paragraphs: [
-        "Jika kamu butuh user menulis pesan panjang (seperti komentar atau keluhan), gunakan <textarea>.",
-        "Berbeda dengan <input>, tag ini butuh penutup </textarea> dan kotaknya bisa ditarik agar lebih besar oleh user."
-      ],
-      codeExample: '<textarea placeholder="Tulis pesan..."></textarea>'
+      paragraphs: ["Gunakan <textarea> untuk input pesan yang panjang."],
+      codeExample: '<textarea></textarea>'
     },
     quest: {
-      instruction: "Buatlah elemen textarea dengan pesan awal di dalamnya 'Tulis di sini...'.",
+      instruction: "Buat elemen textarea dengan pesan awal 'Tulis di sini...'.",
       xp: 160,
-      explanation: { 
-        "<textarea>": "Elemen input teks multi-baris."
-      },
-      initialCode: `<html>\n  <body>\n    <p>Kritik & Saran:</p>\n    <!-- Tambahkan textarea di bawah ini -->\n\n  </body>\n</html>`,
+      explanation: { "<textarea>": "Input teks multi-baris." },
+      initialCode: `<html>\n  <body>\n    <p>Pesan:</p>\n    <!-- Textarea di sini -->\n\n  </body>\n</html>`,
       validation: (code: string) => /<textarea.*>.*Tulis di sini.*<\/textarea>/i.test(code)
     }
   },
@@ -336,19 +282,14 @@ export const HTML_CONTENT: LearningStep[] = [
     id: 17,
     title: "Identitas Tab (Title)",
     materi: {
-      paragraphs: [
-        "Pernahkah kamu melihat teks di tab browser? Itu diatur oleh tag <title>.",
-        "Tag ini **wajib** diletakkan di dalam tag <head>, bukan <body>, karena ia memberikan informasi tentang halaman, bukan isi halaman."
-      ],
-      codeExample: "<head>\n  <title>Nama Web Kamu</title>\n</head>"
+      paragraphs: ["Tag <title> menentukan teks yang muncul di tab browser. Letakkan di dalam <head>."],
+      codeExample: "<head><title>Web</title></head>"
     },
     quest: {
-      instruction: "Lengkapi tag <head> dan tambahkan <title> dengan teks 'Belajar HTML'.",
+      instruction: "Tambahkan <title> dengan teks 'Belajar HTML' di dalam <head>.",
       xp: 120,
-      explanation: { 
-        "<title>": "Menentukan teks yang muncul di bagian atas browser (Tab)."
-      },
-      initialCode: `<html>\n  <head>\n    <!-- Tambahkan title di sini -->\n\n  </head>\n  <body></body>\n</html>`,
+      explanation: { "<title>": "Judul tab browser." },
+      initialCode: `<html>\n  <head>\n    <!-- Title di sini -->\n\n  </head>\n  <body></body>\n</html>`,
       validation: (code: string) => /<title.*>.*Belajar HTML.*<\/title>/i.test(code)
     }
   },
@@ -356,41 +297,29 @@ export const HTML_CONTENT: LearningStep[] = [
     id: 18,
     title: "Memutar Video",
     materi: {
-      paragraphs: [
-        "HTML modern memudahkan kita memutar video tanpa plugin tambahan menggunakan tag <video>.",
-        "Sangat penting menambahkan atribut `controls` agar tombol play, volume, dan full-screen muncul secara otomatis."
-      ],
-      codeExample: '<video src="video.mp4" controls></video>'
+      paragraphs: ["Gunakan tag <video> dengan atribut `controls` untuk memutar video."],
+      codeExample: '<video src="v.mp4" controls></video>'
     },
     quest: {
-      instruction: "Tampilkan sebuah video dan pastikan tombol kontrolnya muncul dengan atribut 'controls'.",
+      instruction: "Tampilkan video dengan atribut 'controls'.",
       xp: 200,
-      explanation: { 
-        "<video>": "Media player bawaan HTML.",
-        "controls": "Atribut untuk memunculkan antarmuka pemutar video."
-      },
-      initialCode: `<html>\n  <body>\n    <!-- Masukkan video di sini -->\n\n  </body>\n</html>`,
+      explanation: { "controls": "Tombol kontrol video." },
+      initialCode: `<html>\n  <body>\n    <!-- Video di sini -->\n\n  </body>\n</html>`,
       validation: (code: string) => /<video.*controls/i.test(code)
     }
   },
   {
     id: 19,
-    title: "Catatan Developer (Comments)",
+    title: "Catatan (Comments)",
     materi: {
-      paragraphs: [
-        "Komentar adalah teks yang hanya bisa dibaca oleh pembuat kode (developer) dan diabaikan oleh browser.",
-        "Ini sangat berguna untuk memberi tanda atau penjelasan pada bagian kode yang rumit.",
-        "Sintaksnya: <!-- Tulis catatan di sini -->"
-      ],
-      codeExample: "<!-- Bagian ini untuk Footer -->"
+      paragraphs: ["Komentar diabaikan oleh browser. Sintaksnya: <!-- Pesan -->."],
+      codeExample: "<!-- Komentar -->"
     },
     quest: {
       instruction: "Buatlah sebuah komentar HTML dengan teks 'Selesai'.",
       xp: 100,
-      explanation: { 
-        "<!-- -->": "Sintaks pembuka dan penutup komentar di HTML."
-      },
-      initialCode: `<html>\n  <body>\n    <!-- Tulis komentar kamu di bawah ini -->\n\n  </body>\n</html>`,
+      explanation: { "<!-- -->": "Sintaks komentar." },
+      initialCode: `<html>\n  <body>\n    <!-- Tulis komentar di sini -->\n\n  </body>\n</html>`,
       validation: (code: string) => /<!--.*Selesai.*-->/.test(code)
     }
   },
@@ -398,20 +327,14 @@ export const HTML_CONTENT: LearningStep[] = [
     id: 20,
     title: "Tantangan Final: Kartu Nama",
     materi: {
-      paragraphs: [
-        "Selamat! Kamu telah menyelesaikan perjalanan dasar HTML.",
-        "Saatnya menguji semua ingatanmu. Kamu harus membuat struktur 'Kartu Nama' yang utuh.",
-        "Kartu ini harus memiliki pembungkus utama (div), nama besar (h1/h2), dan deskripsi diri (p)."
-      ],
-      codeExample: "<div>\n  <h1>John Doe</h1>\n  <p>Web Developer</p>\n</div>"
+      paragraphs: ["Buat struktur 'Kartu Nama' menggunakan <div>, <h1>, dan <p>."],
+      codeExample: "<div><h1>Nama</h1><p>Bio</p></div>"
     },
     quest: {
-      instruction: "Gunakan <div> untuk membungkus judul h1 (Nama Kamu) dan paragraf p (Bio Singkat Kamu).",
+      instruction: "Gunakan <div> untuk membungkus judul h1 dan paragraf p.",
       xp: 300,
-      explanation: { 
-        "Final Boss": "Gunakan gabungan container (div), heading, dan paragraph."
-      },
-      initialCode: `<html>\n  <body>\n    <!-- Bangun Kartu Nama kamu di sini -->\n\n  </body>\n</html>`,
+      explanation: { "Final": "Gabungan container, heading, dan paragraph." },
+      initialCode: `<html>\n  <body>\n    <!-- Kartu Nama di sini -->\n\n  </body>\n</html>`,
       validation: (code: string) => /<div>\s*<h[12].*>.*<\/h[12]>\s*<p.*>.*<\/p>\s*<\/div>/i.test(code)
     }
   }
@@ -420,45 +343,155 @@ export const HTML_CONTENT: LearningStep[] = [
 export const CSS_CONTENT: LearningStep[] = [
   {
     id: 1,
-    title: "Pewarnaan Teks",
+    title: "Sintaks Dasar & Warna",
     materi: {
       paragraphs: [
-        "CSS digunakan untuk mempercantik HTML. Untuk menulis CSS di dalam file HTML, kita wajib menggunakan tag <style> yang diletakkan di dalam <head>.",
-        "Properti `color` digunakan untuk mengubah warna teks. Contohnya `p { color: red; }` akan membuat semua paragraf berwarna merah."
+        "CSS digunakan untuk menghias HTML. Tulis di dalam tag <style>.",
+        "Format: `selector { properti: nilai; }`."
       ],
-      codeExample: "<style>\n  h1 {\n    color: blue;\n  }\n</style>"
+      codeExample: "<style>h1 { color: red; }</style>"
     },
     quest: {
-      instruction: "Ubah warna teks paragraf <p> menjadi merah (red). Tulis kode CSS kamu di dalam tag <style>.",
+      instruction: "Ubah warna h1 menjadi 'crimson' di dalam tag <style>.",
       xp: 100,
-      explanation: { 
-        "<style>": "Tag HTML untuk menulis kode CSS internal.",
-        "color": "Properti CSS untuk mengatur warna tulisan.",
-        "Selector": "Nama elemen yang ingin diubah (contoh: p, h1, body)."
-      },
-      initialCode: `<head>\n  <style>\n    p {\n      /* Tulis color: red; di sini */\n    }\n  </style>\n</head>\n<body>\n  <p>Teks ini harus berwarna merah.</p>\n</body>`,
-      validation: (code: string) => /color\s*:\s*red/i.test(code) && !code.includes('/* Tulis color: red; di sini */')
+      explanation: { "color": "Warna teks.", "style": "Wadah CSS internal." },
+      initialCode: `<style>\n  h1 {\n    /* color: crimson; */\n  }\n</style>\n<h1>Judul</h1>`,
+      validation: (code: string) => /color\s*:\s*crimson/i.test(code) && !code.includes('/* color: crimson; */')
     }
   },
   {
     id: 2,
-    title: "Warna Latar",
+    title: "Latar Belakang",
     materi: {
-      paragraphs: [
-        "Gunakan `background-color` untuk mengubah warna latar belakang elemen.",
-        "Ingat, setiap instruksi CSS harus berada di dalam kurung kurawal `{ }` milik sebuah selector."
-      ],
-      codeExample: "body {\n  background-color: lightblue;\n}"
+      paragraphs: ["Gunakan `background-color` untuk mewarnai latar belakang."],
+      codeExample: "body { background-color: yellow; }"
     },
     quest: {
-      instruction: "Ubah background body menjadi lightblue di dalam tag <style>.",
+      instruction: "Ubah background body menjadi 'ghostwhite'.",
       xp: 120,
-      explanation: { 
-        "background-color": "Properti untuk mewarnai latar belakang.",
-        "body": "Selector untuk menargetkan seluruh halaman."
-      },
-      initialCode: `<head>\n  <style>\n    body {\n      /* Tulis background-color: lightblue; di sini */\n    }\n  </style>\n</head>`,
-      validation: (code: string) => /background-color\s*:\s*lightblue/i.test(code) && !code.includes('/* Tulis background-color: lightblue; di sini */')
+      explanation: { "background-color": "Warna latar." },
+      initialCode: `<style>\n  body {\n    /* background-color: ghostwhite; */\n  }\n</style>`,
+      validation: (code: string) => /background-color\s*:\s*ghostwhite/i.test(code) && !code.includes('/* background-color: ghostwhite; */')
+    }
+  },
+  {
+    id: 3,
+    title: "Ukuran Font",
+    materi: {
+      paragraphs: ["Gunakan `font-size` dengan satuan 'px' untuk mengatur ukuran teks."],
+      codeExample: "p { font-size: 20px; }"
+    },
+    quest: {
+      instruction: "Ubah ukuran font paragraf <p> menjadi '24px'.",
+      xp: 110,
+      explanation: { "font-size": "Ukuran teks." },
+      initialCode: `<style>\n  p {\n    /* font-size: 24px; */\n  }\n</style><p>Teks</p>`,
+      validation: (code: string) => /font-size\s*:\s*24px/i.test(code) && !code.includes('/* font-size: 24px; */')
+    }
+  },
+  {
+    id: 4,
+    title: "Ketebalan Font",
+    materi: {
+      paragraphs: ["Gunakan `font-weight` (bold atau 100-900) untuk menebalkan teks."],
+      codeExample: "span { font-weight: bold; }"
+    },
+    quest: {
+      instruction: "Buat teks di <span> menjadi sangat tebal (900).",
+      xp: 120,
+      explanation: { "font-weight": "Ketebalan teks." },
+      initialCode: `<style>\n  span {\n    /* font-weight: 900; */\n  }\n</style><span>Tebal</span>`,
+      validation: (code: string) => /font-weight\s*:\s*900/i.test(code) && !code.includes('/* font-weight: 900; */')
+    }
+  },
+  {
+    id: 5,
+    title: "Jenis Huruf",
+    materi: {
+      paragraphs: ["Gunakan `font-family` untuk mengubah tipe huruf (sans-serif, monospace)."],
+      codeExample: "body { font-family: sans-serif; }"
+    },
+    quest: {
+      instruction: "Ubah font halaman menjadi 'monospace'.",
+      xp: 130,
+      explanation: { "font-family": "Tipe huruf." },
+      initialCode: `<style>\n  body {\n    /* font-family: monospace; */\n  }\n</style>`,
+      validation: (code: string) => /font-family\s*:\s*monospace/i.test(code) && !code.includes('/* font-family: monospace; */')
+    }
+  },
+  {
+    id: 6,
+    title: "Padding",
+    materi: {
+      paragraphs: ["Padding adalah jarak di dalam elemen."],
+      codeExample: "div { padding: 10px; }"
+    },
+    quest: {
+      instruction: "Tambahkan padding '30px' pada <div>.",
+      xp: 150,
+      explanation: { "padding": "Jarak dalam." },
+      initialCode: `<style>\n  div {\n    /* padding: 30px; */\n  }\n</style><div>Isi</div>`,
+      validation: (code: string) => /padding\s*:\s*30px/i.test(code) && !code.includes('/* padding: 30px; */')
+    }
+  },
+  {
+    id: 7,
+    title: "Garis Tepi (Border)",
+    materi: {
+      paragraphs: ["Format border: `tebal tipe warna`."],
+      codeExample: "img { border: 2px solid black; }"
+    },
+    quest: {
+      instruction: "Berikan border '2px solid blue' pada img.",
+      xp: 160,
+      explanation: { "border": "Garis tepi." },
+      initialCode: `<style>\n  img {\n    /* border: 2px solid blue; */\n  }\n</style><img>`,
+      validation: (code: string) => /border\s*:\s*2px\s+solid\s+blue/i.test(code) && !code.includes('/* border: 2px solid blue; */')
+    }
+  },
+  {
+    id: 8,
+    title: "Margin",
+    materi: {
+      paragraphs: ["Margin adalah jarak di luar elemen."],
+      codeExample: "h1 { margin: 20px; }"
+    },
+    quest: {
+      instruction: "Berikan margin '40px' pada h1.",
+      xp: 150,
+      explanation: { "margin": "Jarak luar." },
+      initialCode: `<style>\n  h1 {\n    /* margin: 40px; */\n  }\n</style><h1>Judul</h1>`,
+      validation: (code: string) => /margin\s*:\s*40px/i.test(code) && !code.includes('/* margin: 40px; */')
+    }
+  },
+  {
+    id: 9,
+    title: "Ukuran Kotak",
+    materi: {
+      paragraphs: ["Atur `width` (lebar) dan `height` (tinggi) kotak."],
+      codeExample: "div { width: 50px; }"
+    },
+    quest: {
+      instruction: "Buat div dengan lebar '200px' dan tinggi '100px'.",
+      xp: 140,
+      explanation: { "width": "Lebar.", "height": "Tinggi." },
+      initialCode: `<style>\n  div {\n    /* width: 200px; height: 100px; */\n  }\n</style><div></div>`,
+      validation: (code: string) => /width\s*:\s*200px/i.test(code) && /height\s*:\s*100px/i.test(code)
+    }
+  },
+  {
+    id: 10,
+    title: "Perataan Teks",
+    materi: {
+      paragraphs: ["Gunakan `text-align: center` untuk ke tengah."],
+      codeExample: "h1 { text-align: center; }"
+    },
+    quest: {
+      instruction: "Pindahkan h1 ke tengah layar.",
+      xp: 130,
+      explanation: { "text-align": "Perataan teks." },
+      initialCode: `<style>\n  h1 {\n    /* text-align: center; */\n  }\n</style><h1>Tengah</h1>`,
+      validation: (code: string) => /text-align\s*:\s*center/i.test(code) && !code.includes('/* text-align: center; */')
     }
   }
 ];
@@ -468,145 +501,101 @@ export const JS_CONTENT: LearningStep[] = [
     id: 1,
     title: "Output Console",
     materi: {
-      paragraphs: [
-        "JavaScript adalah bahasa pemrograman. Agar bisa berjalan di HTML, kode JS harus dibungkus dengan tag <script>.",
-        "Fungsi `console.log()` adalah cara paling dasar untuk menampilkan pesan ke jendela debugger browser."
-      ],
-      codeExample: "<script>\n  console.log('Halo');\n</script>"
+      paragraphs: ["Tulis JS di dalam <script>. Gunakan `console.log()`."],
+      codeExample: "<script>console.log('Tes');</script>"
     },
     quest: {
-      instruction: "Cetak teks 'Belajar JS' menggunakan console.log. Pastikan kodenya di dalam tag <script>.",
+      instruction: "Cetak 'Belajar JS' di console.",
       xp: 100,
-      explanation: { 
-        "<script>": "Tag HTML untuk menulis atau memanggil kode JavaScript.",
-        "console.log": "Perintah untuk mencetak data ke console browser."
-      },
-      initialCode: `<body>\n  <script>\n    // Tulis console.log("Belajar JS"); di bawah ini\n\n  </script>\n</body>`,
-      validation: (code: string) => /console\.log\s*\(\s*['"]Belajar JS['"]\s*\)/i.test(code) && !code.includes('// Tulis console.log("Belajar JS"); di bawah ini')
+      explanation: { "console.log": "Output debugger." },
+      initialCode: `<script>\n  /* console.log("Belajar JS"); */\n</script>`,
+      validation: (code: string) => /console\.log\s*\(\s*['"]Belajar JS['"]\s*\)/i.test(code) && !code.includes('/* console.log("Belajar JS"); */')
     }
   },
   {
     id: 2,
-    title: "Variabel Modern",
+    title: "Variabel (let)",
     materi: {
-      paragraphs: [
-        "Variabel adalah wadah penyimpanan data. Di JavaScript modern, kita menggunakan `let`.",
-        "Contoh: `let nama = 'Budi';` akan menyimpan teks 'Budi' ke dalam variabel bernama 'nama'."
-      ],
-      codeExample: "let skor = 10;"
+      paragraphs: ["Gunakan `let` untuk wadah data yang dinamis."],
+      codeExample: "let x = 5;"
     },
     quest: {
-      instruction: "Buat variabel bernama 'skor' dengan nilai 100 di dalam tag <script>.",
+      instruction: "Buat variabel 'skor' bernilai 100.",
       xp: 120,
-      explanation: { 
-        "let": "Kata kunci untuk membuat variabel.",
-        "assignment": "Gunakan tanda '=' untuk memasukkan nilai ke variabel."
-      },
-      initialCode: `<script>\n  // Tulis let skor = 100; di sini\n\n</script>`,
-      validation: (code: string) => /let\s+skor\s*=\s*100/i.test(code) && !code.includes('// Tulis let skor = 100; di sini')
+      explanation: { "let": "Variabel modern." },
+      initialCode: `<script>\n  /* let skor = 100; */\n</script>`,
+      validation: (code: string) => /let\s+skor\s*=\s*100/i.test(code) && !code.includes('/* let skor = 100; */')
     }
+  },
+  {
+    id: 3,
+    title: "Penjumlahan",
+    materi: { paragraphs: ["Operasi matematika dasar (+)."], codeExample: "let x = 1 + 1;" },
+    quest: { instruction: "Buat variabel 'hasil' berisi 10 + 20.", xp: 110, explanation: { "+": "Tambah." }, initialCode: `<script></script>`, validation: (code: string) => /let\s+hasil\s*=\s*10\s*\+\s*20/i.test(code) || /let\s+hasil\s*=\s*30/i.test(code) }
+  },
+  {
+    id: 4,
+    title: "String",
+    materi: { paragraphs: ["Teks harus dibungkus tanda kutip."], codeExample: "let x = 'Halo';" },
+    quest: { instruction: "Buat variabel 'kota' berisi 'Jakarta'.", xp: 110, explanation: { "string": "Tipe data teks." }, initialCode: `<script></script>`, validation: (code: string) => /let\s+kota\s*=\s*['"]Jakarta['"]/i.test(code) }
+  },
+  {
+    id: 5,
+    title: "Konstanta",
+    materi: { paragraphs: ["Gunakan `const` untuk nilai tetap."], codeExample: "const X = 1;" },
+    quest: { instruction: "Buat konstanta 'NEGARA' berisi 'Indonesia'.", xp: 130, explanation: { "const": "Variabel tetap." }, initialCode: `<script></script>`, validation: (code: string) => /const\s+NEGARA\s*=\s*['"]Indonesia['"]/i.test(code) }
+  },
+  {
+    id: 6,
+    title: "Gabung Teks",
+    materi: { paragraphs: ["Gunakan (+) untuk menyambung teks."], codeExample: "'A' + 'B'" },
+    quest: { instruction: "Gabungkan 'Satu' dan 'Dua' ke variabel 'angka'.", xp: 140, explanation: { "+": "Penyambung teks." }, initialCode: `<script>let angka = 'Satu' + </script>`, validation: (code: string) => /'Satu'\s*\+\s*['"]Dua['"]/i.test(code) }
+  },
+  {
+    id: 7,
+    title: "Alert",
+    materi: { paragraphs: ["`alert()` memunculkan pop-up."], codeExample: "alert('Hi');" },
+    quest: { instruction: "Munculkan alert 'Sukses!'.", xp: 120, explanation: { "alert": "Dialog box." }, initialCode: `<script></script>`, validation: (code: string) => /alert\s*\(\s*['"]Sukses!['"]\s*\)/i.test(code) }
+  },
+  {
+    id: 8,
+    title: "Function",
+    materi: { paragraphs: ["Fungsi adalah blok kode yang bisa dipanggil."], codeExample: "function x(){}" },
+    quest: { instruction: "Buat fungsi 'tes' yang ada console.log di dalamnya.", xp: 180, explanation: { "function": "Blok kode." }, initialCode: `<script>function tes() {}</script>`, validation: (code: string) => /function\s+tes\s*\(\s*\)\s*{/i.test(code) && /console\.log/i.test(code) }
+  },
+  {
+    id: 9,
+    title: "Perkalian",
+    materi: { paragraphs: ["Simbol (*) untuk perkalian."], codeExample: "5 * 5" },
+    quest: { instruction: "Hitung 4 dikali 5 di variabel 'hitung'.", xp: 130, explanation: { "*": "Kali." }, initialCode: `<script></script>`, validation: (code: string) => /let\s+hitung\s*=\s*4\s*\*\s*5/i.test(code) || /let\s+hitung\s*=\s*20/i.test(code) }
+  },
+  {
+    id: 10,
+    title: "Komentar JS",
+    materi: { paragraphs: ["Gunakan // untuk catatan."], codeExample: "// Catatan" },
+    quest: { instruction: "Tulis komentar JS teks 'Ok'.", xp: 100, explanation: { "//": "Komentar satu baris." }, initialCode: `<script></script>`, validation: (code: string) => /\/\/\s*Ok/i.test(code) }
   }
 ];
 
 export const LINUX_CONTENT: LearningStep[] = [
-  {
-    id: 1, title: "GPS Terminal (pwd)",
-    materi: { paragraphs: ["'pwd' (Print Working Directory) menunjukkan lokasi folder aktif."], codeExample: "$ pwd" },
-    quest: { instruction: "Ketik perintah untuk cek lokasi saat ini.", xp: 100, explanation: { "pwd": "Cek lokasi." }, command: "pwd" }
-  },
-  {
-    id: 2, title: "Melihat Sekitar (ls)",
-    materi: { paragraphs: ["'ls' (List) menampilkan isi direktori."], codeExample: "$ ls" },
-    quest: { instruction: "Gunakan perintah list isi folder.", xp: 120, explanation: { "ls": "Daftar isi." }, command: "ls" }
-  },
-  {
-    id: 3, title: "Siapa Saya? (whoami)",
-    materi: { paragraphs: ["Cek username yang sedang aktif."], codeExample: "$ whoami" },
-    quest: { instruction: "Ketik perintah whoami.", xp: 100, explanation: { "whoami": "Cek user." }, command: "whoami" }
-  },
-  {
-    id: 4, title: "Bersihkan Layar (clear)",
-    materi: { paragraphs: ["Gunakan 'clear' untuk merapikan tampilan."], codeExample: "$ clear" },
-    quest: { instruction: "Ketik perintah clear.", xp: 100, explanation: { "clear": "Hapus teks layar." }, command: "clear" }
-  },
-  {
-    id: 5, title: "Buat Folder (mkdir)",
-    materi: { paragraphs: ["'mkdir' untuk membuat folder baru."], codeExample: "$ mkdir folder" },
-    quest: { instruction: "Buat folder bernama 'belajar'.", xp: 150, explanation: { "mkdir": "Make Directory." }, command: "mkdir belajar" }
-  },
-  {
-    id: 6, title: "Buat File (touch)",
-    materi: { paragraphs: ["'touch' untuk membuat file kosong."], codeExample: "$ touch file.txt" },
-    quest: { instruction: "Buat file 'catatan.txt'.", xp: 150, explanation: { "touch": "Buat file." }, command: "touch catatan.txt" }
-  },
-  {
-    id: 7, title: "Masuk Folder (cd)",
-    materi: { paragraphs: ["'cd' untuk berpindah direktori."], codeExample: "$ cd folder" },
-    quest: { instruction: "Masuk ke folder 'belajar'.", xp: 140, explanation: { "cd": "Change Directory." }, command: "cd belajar" }
-  },
-  {
-    id: 8, title: "Kembali (cd ..)",
-    materi: { paragraphs: ["'cd ..' untuk naik satu tingkat."], codeExample: "$ cd .." },
-    quest: { instruction: "Keluar dari folder saat ini.", xp: 130, explanation: { "..": "Parent directory." }, command: "cd .." }
-  },
-  {
-    id: 9, title: "Cek Waktu (date)",
-    materi: { paragraphs: ["Tampilkan waktu sistem."], codeExample: "$ date" },
-    quest: { instruction: "Ketik perintah date.", xp: 100, explanation: { "date": "Info waktu." }, command: "date" }
-  },
-  {
-    id: 10, title: "Cetak Teks (echo)",
-    materi: { paragraphs: ["'echo' untuk menampilkan teks."], codeExample: "$ echo Halo" },
-    quest: { instruction: "Cetak teks 'Belajar Linux'.", xp: 110, explanation: { "echo": "Print teks." }, command: "echo Belajar Linux" }
-  },
-  {
-    id: 11, title: "Baca File (cat)",
-    materi: { paragraphs: ["'cat' untuk melihat isi file."], codeExample: "$ cat file.txt" },
-    quest: { instruction: "Baca file 'readme.txt'.", xp: 160, explanation: { "cat": "Read file." }, command: "cat readme.txt" }
-  },
-  {
-    id: 12, title: "Hapus File (rm)",
-    materi: { paragraphs: ["'rm' menghapus file secara permanen."], codeExample: "$ rm file.txt" },
-    quest: { instruction: "Hapus 'catatan.txt'.", xp: 150, explanation: { "rm": "Remove file." }, command: "rm catatan.txt" }
-  },
-  {
-    id: 13, title: "Hapus Folder (rmdir)",
-    materi: { paragraphs: ["'rmdir' menghapus folder kosong."], codeExample: "$ rmdir folder" },
-    quest: { instruction: "Hapus folder 'belajar'.", xp: 150, explanation: { "rmdir": "Remove directory." }, command: "rmdir belajar" }
-  },
-  {
-    id: 14, title: "Salin File (cp)",
-    materi: { paragraphs: ["'cp source dest' untuk menyalin."], codeExample: "$ cp a.txt b.txt" },
-    quest: { instruction: "Salin 'readme.txt' ke 'readme_v2.txt'.", xp: 180, explanation: { "cp": "Copy." }, command: "cp readme.txt readme_v2.txt" }
-  },
-  {
-    id: 15, title: "Pindah/Ganti Nama (mv)",
-    materi: { paragraphs: ["'mv' untuk memindah atau mengganti nama."], codeExample: "$ mv a.txt b.txt" },
-    quest: { instruction: "Ganti nama 'readme_v2.txt' ke 'final.txt'.", xp: 180, explanation: { "mv": "Move/Rename." }, command: "mv readme_v2.txt final.txt" }
-  },
-  {
-    id: 16, title: "Intip Awal (head)",
-    materi: { paragraphs: ["Lihat 10 baris pertama file."], codeExample: "$ head file.txt" },
-    quest: { instruction: "Intip awal file 'final.txt'.", xp: 140, explanation: { "head": "Top of file." }, command: "head final.txt" }
-  },
-  {
-    id: 17, title: "Intip Akhir (tail)",
-    materi: { paragraphs: ["Lihat bagian bawah file."], codeExample: "$ tail file.txt" },
-    quest: { instruction: "Intip akhir file 'final.txt'.", xp: 140, explanation: { "tail": "Bottom of file." }, command: "tail final.txt" }
-  },
-  {
-    id: 18, title: "Cari Kata (grep)",
-    materi: { paragraphs: ["Cari teks di dalam file."], codeExample: "$ grep kata file.txt" },
-    quest: { instruction: "Cari kata 'Linux' di 'final.txt'.", xp: 200, explanation: { "grep": "Search text." }, command: "grep Linux final.txt" }
-  },
-  {
-    id: 19, title: "Akses Admin (sudo)",
-    materi: { paragraphs: ["Gunakan 'sudo' untuk hak akses root."], codeExample: "$ sudo command" },
-    quest: { instruction: "Jalankan 'whoami' with sudo.", xp: 250, explanation: { "sudo": "Superuser do." }, command: "sudo whoami" }
-  },
-  {
-    id: 20, title: "Selesai (exit)",
-    materi: { paragraphs: ["Keluar dari terminal."], codeExample: "$ exit" },
-    quest: { instruction: "Ketik perintah exit.", xp: 300, explanation: { "exit": "Keluar." }, command: "exit" }
-  }
+  { id: 1, title: "GPS Terminal (pwd)", materi: { paragraphs: ["'pwd' menunjukkan lokasi aktif."], codeExample: "$ pwd" }, quest: { instruction: "Ketik perintah lokasi.", xp: 100, explanation: { "pwd": "Cek lokasi." }, command: "pwd" } },
+  { id: 2, title: "Melihat Sekitar (ls)", materi: { paragraphs: ["'ls' menampilkan isi folder."], codeExample: "$ ls" }, quest: { instruction: "Gunakan perintah list.", xp: 120, explanation: { "ls": "Daftar isi." }, command: "ls" } },
+  { id: 3, title: "Siapa Saya? (whoami)", materi: { paragraphs: ["Cek username aktif."], codeExample: "$ whoami" }, quest: { instruction: "Ketik whoami.", xp: 100, explanation: { "whoami": "Cek user." }, command: "whoami" } },
+  { id: 4, title: "Bersihkan Layar (clear)", materi: { paragraphs: ["'clear' merapikan tampilan."], codeExample: "$ clear" }, quest: { instruction: "Ketik clear.", xp: 100, explanation: { "clear": "Hapus teks." }, command: "clear" } },
+  { id: 5, title: "Buat Folder (mkdir)", materi: { paragraphs: ["'mkdir' membuat folder baru."], codeExample: "$ mkdir" }, quest: { instruction: "Buat folder 'belajar'.", xp: 150, explanation: { "mkdir": "Make Dir." }, command: "mkdir belajar" } },
+  { id: 6, title: "Buat File (touch)", materi: { paragraphs: ["'touch' membuat file kosong."], codeExample: "$ touch" }, quest: { instruction: "Buat file 'catatan.txt'.", xp: 150, explanation: { "touch": "Buat file." }, command: "touch catatan.txt" } },
+  { id: 7, title: "Masuk Folder (cd)", materi: { paragraphs: ["'cd' berpindah direktori."], codeExample: "$ cd" }, quest: { instruction: "Masuk ke 'belajar'.", xp: 140, explanation: { "cd": "Change Dir." }, command: "cd belajar" } },
+  { id: 8, title: "Kembali (cd ..)", materi: { paragraphs: ["'cd ..' naik tingkat."], codeExample: "$ cd .." }, quest: { instruction: "Keluar dari folder.", xp: 130, explanation: { "..": "Parent dir." }, command: "cd .." } },
+  { id: 9, title: "Cek Waktu (date)", materi: { paragraphs: ["Tampilkan waktu sistem."], codeExample: "$ date" }, quest: { instruction: "Ketik date.", xp: 100, explanation: { "date": "Info waktu." }, command: "date" } },
+  { id: 10, title: "Cetak Teks (echo)", materi: { paragraphs: ["'echo' menampilkan teks."], codeExample: "$ echo" }, quest: { instruction: "Cetak 'Belajar Linux'.", xp: 110, explanation: { "echo": "Print." }, command: "echo Belajar Linux" } },
+  { id: 11, title: "Baca File (cat)", materi: { paragraphs: ["'cat' melihat isi file."], codeExample: "$ cat" }, quest: { instruction: "Baca 'readme.txt'.", xp: 160, explanation: { "cat": "Read." }, command: "cat readme.txt" } },
+  { id: 12, title: "Hapus File (rm)", materi: { paragraphs: ["'rm' menghapus file."], codeExample: "$ rm" }, quest: { instruction: "Hapus 'catatan.txt'.", xp: 150, explanation: { "rm": "Remove." }, command: "rm catatan.txt" } },
+  { id: 13, title: "Hapus Folder (rmdir)", materi: { paragraphs: ["'rmdir' hapus folder kosong."], codeExample: "$ rmdir" }, quest: { instruction: "Hapus 'belajar'.", xp: 150, explanation: { "rmdir": "Remove dir." }, command: "rmdir belajar" } },
+  { id: 14, title: "Salin File (cp)", materi: { paragraphs: ["'cp' untuk menyalin."], codeExample: "$ cp" }, quest: { instruction: "Salin 'readme.txt' ke 'v2.txt'.", xp: 180, explanation: { "cp": "Copy." }, command: "cp readme.txt v2.txt" } },
+  { id: 15, title: "Pindah (mv)", materi: { paragraphs: ["'mv' untuk ganti nama."], codeExample: "$ mv" }, quest: { instruction: "Ganti 'v2.txt' ke 'final.txt'.", xp: 180, explanation: { "mv": "Move." }, command: "mv v2.txt final.txt" } },
+  { id: 16, title: "Intip Awal (head)", materi: { paragraphs: ["'head' lihat awal file."], codeExample: "$ head" }, quest: { instruction: "Intip awal 'final.txt'.", xp: 140, explanation: { "head": "Top." }, command: "head final.txt" } },
+  { id: 17, title: "Intip Akhir (tail)", materi: { paragraphs: ["'tail' lihat akhir file."], codeExample: "$ tail" }, quest: { instruction: "Intip akhir 'final.txt'.", xp: 140, explanation: { "tail": "Bottom." }, command: "tail final.txt" } },
+  { id: 18, title: "Cari (grep)", materi: { paragraphs: ["'grep' cari teks."], codeExample: "$ grep" }, quest: { instruction: "Cari 'Linux' di 'final.txt'.", xp: 200, explanation: { "grep": "Search." }, command: "grep Linux final.txt" } },
+  { id: 19, title: "Admin (sudo)", materi: { paragraphs: ["'sudo' hak akses root."], codeExample: "$ sudo" }, quest: { instruction: "Jalankan 'whoami' via sudo.", xp: 250, explanation: { "sudo": "Superuser." }, command: "sudo whoami" } },
+  { id: 20, title: "Exit", materi: { paragraphs: ["'exit' keluar terminal."], codeExample: "$ exit" }, quest: { instruction: "Ketik exit.", xp: 300, explanation: { "exit": "Keluar." }, command: "exit" } }
 ];
