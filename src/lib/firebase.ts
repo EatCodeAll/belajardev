@@ -2,15 +2,15 @@ import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
-// Firebase configuration for Belajardev
+// Firebase configuration using environment variables for security
 const firebaseConfig = {
-  apiKey: "AIzaSyBK9l5ujWqG5PQqMIYzg-WBpLFIVoDmniI",
-  authDomain: "belajardev-e02f8.firebaseapp.com",
-  projectId: "belajardev-e02f8",
-  storageBucket: "belajardev-e02f8.firebasestorage.app",
-  messagingSenderId: "1034543707708",
-  appId: "1:1034543707708:web:b654da0f90f998808e3539",
-  measurementId: "G-PQZMQ7N6X0"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 };
 
 const app = initializeApp(firebaseConfig);
