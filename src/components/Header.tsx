@@ -1,5 +1,6 @@
 import React from 'react';
 import { BookOpen, Zap, RefreshCw } from 'lucide-react';
+import Auth from './Auth';
 
 interface HeaderProps {
   xp: number;
@@ -21,18 +22,24 @@ const Header: React.FC<HeaderProps> = ({ xp, onHomeClick, onResetProgress }) => 
           <span className="font-bold text-slate-900 tracking-tight text-sm">BelajarDev</span>
         </div>
 
-        <div className="flex items-center gap-3">
-          <div className="flex items-center gap-2 px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg">
-            <Zap size={14} className="text-amber-500 fill-amber-500" />
-            <span className="font-bold text-slate-700 text-xs">{xp} XP</span>
+        <div className="flex items-center gap-2 sm:gap-4">
+          <div className="flex items-center gap-1.5 sm:gap-3">
+            <div className="flex items-center gap-1.5 px-2 py-1 sm:px-3 sm:py-1.5 bg-slate-50 border border-slate-200 rounded-lg">
+              <Zap size={12} className="text-amber-500 fill-amber-500 sm:w-3.5 sm:h-3.5" />
+              <span className="font-bold text-slate-700 text-[10px] sm:text-xs">{xp} XP</span>
+            </div>
+            <button 
+              onClick={() => { if(confirm('Hapus semua progres belajar?')) onResetProgress(); }} 
+              className="p-1.5 sm:p-2 text-slate-400 hover:text-slate-900 hover:bg-slate-50 rounded-lg transition-colors"
+              title="Reset Progres"
+            >
+              <RefreshCw size={14} className="sm:w-4 sm:h-4" />
+            </button>
           </div>
-          <button 
-            onClick={() => { if(confirm('Hapus semua progres belajar?')) onResetProgress(); }} 
-            className="p-2 text-slate-400 hover:text-slate-900 hover:bg-slate-50 rounded-lg transition-colors"
-            title="Reset Progres"
-          >
-            <RefreshCw size={16} />
-          </button>
+          
+          <div className="w-[1px] h-5 bg-slate-200 hidden md:block"></div>
+          
+          <Auth />
         </div>
       </div>
     </header>
