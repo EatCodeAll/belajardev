@@ -7,17 +7,21 @@ import Home from './components/Home';
 import Landing from './components/Landing';
 import HtmlModule from './modules/html/HtmlModule';
 import LinuxModule from './modules/linux/LinuxModule';
+import CssModule from './modules/css/CssModule';
+import JsModule from './modules/js/JsModule';
 import { useProgress } from './hooks/useProgress';
 import { auth } from './lib/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
+type ModuleType = 'home' | 'html' | 'linux' | 'css' | 'js';
+
 function App() {
   const [user, loading] = useAuthState(auth);
-  const [activeModule, setActiveModule] = useState<'home' | 'html' | 'linux'>('home');
-  const { xp, completedHtml, completedLinux, completeStep, resetProgress } = useProgress();
+  const [activeModule, setActiveModule] = useState<ModuleType>('home');
+  const { xp, completedHtml, completedLinux, completedCss, completedJs, completeStep, resetProgress } = useProgress();
 
   const handleHomeClick = () => setActiveModule('home');
-  const handleNavigate = (module: 'home' | 'html' | 'linux') => setActiveModule(module);
+  const handleNavigate = (module: ModuleType) => setActiveModule(module);
 
   if (loading) {
     return (
@@ -27,22 +31,12 @@ function App() {
     );
   }
 
-  if (!user) {
-    return <Landing />;
-  }
+  if (!user) return <Landing />;
 
   return (
     <div className="min-h-screen pb-32 overflow-x-hidden selection:bg-indigo-100 selection:text-indigo-900">
-      <Header 
-        xp={xp} 
-        onHomeClick={handleHomeClick} 
-        onResetProgress={resetProgress} 
-      />
-
-      <Navbar 
-        activeModule={activeModule} 
-        setActiveModule={setActiveModule} 
-      />
+      <Header xp={xp} onHomeClick={handleHomeClick} onResetProgress={resetProgress} />
+      <Navbar activeModule={activeModule} setActiveModule={setActiveModule} />
 
       <main className="max-w-7xl mx-auto px-6 pt-24">
         {activeModule === 'home' && (
@@ -50,7 +44,9 @@ function App() {
             setActiveModule={setActiveModule} 
             xp={xp} 
             completedHtml={completedHtml} 
-            completedLinux={completedLinux} 
+            completedLinux={completedLinux}
+            completedCss={completedCss}
+            completedJs={completedJs}
           />
         )}
 
@@ -66,6 +62,22 @@ function App() {
           <LinuxModule 
             onCompleteStep={(id) => completeStep('linux', id)} 
             completedSteps={completedLinux}
+            onNavigate={handleNavigate}
+          />
+        )}
+
+        {activeModule === 'css' && (
+          <CssModule 
+            onCompleteStep={(id) => completeStep('css', id)} 
+            completedSteps={completedCss}
+            onNavigate={handleNavigate}
+          />
+        )}
+
+        {activeModule === 'js' && (
+          <JsModule 
+            onCompleteStep={(id) => completeStep('js', id)} 
+            completedSteps={completedJs}
             onNavigate={handleNavigate}
           />
         )}

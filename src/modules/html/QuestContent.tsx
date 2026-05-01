@@ -68,6 +68,26 @@ const QuestContent: React.FC<QuestContentProps> = ({ currentStep, isCompleted, o
     );
   }
 
+  const getScopedCode = (rawCode: string) => {
+    // If there's no <style> tag, return as is
+    if (!rawCode.includes('<style>')) return rawCode;
+
+    try {
+      // Simple regex to find style tags and scope their contents
+      return rawCode.replace(/<style>([\s\S]*?)<\/style>/gi, (_, css) => {
+        // Scope every selector by prefixing with #preview-root
+        const scopedCss = css.replace(/([^\s}{]+)\s*(?={)/g, (selector: string) => {
+          const trimmed = selector.trim();
+          if (trimmed === 'body' || trimmed === 'html') return '#preview-area';
+          return `#preview-area ${trimmed}`;
+        });
+        return `<style>${scopedCss}</style>`;
+      });
+    } catch (e) {
+      return rawCode;
+    }
+  };
+
   return (
     <div className="flex flex-col gap-4 animate-in fade-in duration-500">
       {/* Mobile Tab Switcher */}
@@ -127,8 +147,8 @@ const QuestContent: React.FC<QuestContentProps> = ({ currentStep, isCompleted, o
               </div>
               <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-2">Live Preview</span>
            </div>
-           <div className="flex-1 bg-white p-4 overflow-auto">
-              <div dangerouslySetInnerHTML={{ __html: code }} />
+           <div className="flex-1 bg-white p-4 overflow-auto relative" id="preview-area">
+              <div dangerouslySetInnerHTML={{ __html: getScopedCode(code) }} />
            </div>
         </div>
       </div>

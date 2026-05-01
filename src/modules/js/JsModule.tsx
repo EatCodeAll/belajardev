@@ -1,30 +1,30 @@
 import React, { useState } from 'react';
 import ProgressBar from '../../components/ProgressBar';
 import Congrats from '../../components/Congrats';
-import LinuxQuestContent from './LinuxQuestContent';
-import { LINUX_CONTENT } from '../../data/content';
+import QuestContent from '../html/QuestContent';
+import { JS_CONTENT } from '../../data/content';
 import { Trophy } from 'lucide-react';
 
 interface Props {
   onCompleteStep: (id: number) => void;
   completedSteps: number[];
-  onNavigate: (module: 'home' | 'html' | 'linux') => void;
+  onNavigate: (module: 'home' | 'html' | 'linux' | 'css' | 'js') => void;
 }
 
-const LinuxModule: React.FC<Props> = ({ onCompleteStep, completedSteps, onNavigate }) => {
+const JsModule: React.FC<Props> = ({ onCompleteStep, completedSteps, onNavigate }) => {
   const [currentStepIdx, setCurrentStepIdx] = useState(() => {
-    const firstUncompleted = LINUX_CONTENT.findIndex(s => !completedSteps.includes(s.id));
+    const firstUncompleted = JS_CONTENT.findIndex(s => !completedSteps.includes(s.id));
     return firstUncompleted === -1 ? 0 : firstUncompleted;
   });
   const [showCongrats, setShowCongrats] = useState(() => {
-    return completedSteps.length === LINUX_CONTENT.length && LINUX_CONTENT.length > 0;
+    return completedSteps.length === JS_CONTENT.length && JS_CONTENT.length > 0;
   });
 
-  const currentStep = LINUX_CONTENT[currentStepIdx];
+  const currentStep = JS_CONTENT[currentStepIdx];
   const isCompleted = completedSteps.includes(currentStep.id);
 
   const handleNext = () => {
-    if (currentStepIdx < LINUX_CONTENT.length - 1) {
+    if (currentStepIdx < JS_CONTENT.length - 1) {
       setCurrentStepIdx(prev => prev + 1);
     } else {
       setShowCongrats(true);
@@ -34,33 +34,32 @@ const LinuxModule: React.FC<Props> = ({ onCompleteStep, completedSteps, onNaviga
   if (showCongrats) {
     return (
       <Congrats 
-        moduleName="Linux Systems"
-        xpEarned={LINUX_CONTENT.reduce((acc, curr) => acc + curr.quest.xp, 0)}
-        onContinue={() => onNavigate('html')}
+        moduleName="JS Basics"
+        xpEarned={JS_CONTENT.reduce((acc, curr) => acc + curr.quest.xp, 0)}
+        onContinue={() => onNavigate('home')}
         onGoHome={() => onNavigate('home')}
       />
     );
   }
 
   return (
-    <div className="flex flex-col gap-6 max-w-5xl mx-auto animate-in fade-in duration-500 pb-20">
-      {/* Professional Module Header */}
+    <div className="flex flex-col gap-6 max-w-4xl mx-auto animate-in fade-in duration-500 pb-20">
       <div className="flex flex-col gap-4 px-4">
         <div className="flex items-center justify-between gap-4">
           <div className="flex flex-col min-w-0">
-            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Linux Systems</span>
-            <h2 className="text-xl md:text-2xl font-bold text-slate-900 tracking-tight truncate">{currentStep.title}</h2>
+            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">JS Basics</span>
+            <h3 className="text-xl md:text-2xl font-bold text-slate-900 tracking-tight truncate">{currentStep.title}</h3>
           </div>
           <div className="shrink-0 flex items-center gap-2 px-3 py-1.5 bg-slate-50 rounded-lg border border-slate-100">
              <Trophy size={14} className="text-slate-400" />
              <span className="text-[10px] font-bold text-slate-600 tracking-tight">{currentStep.quest.xp} XP</span>
           </div>
         </div>
-        <ProgressBar current={currentStepIdx + 1} total={LINUX_CONTENT.length} colorClass="bg-slate-900" />
+        <ProgressBar current={currentStepIdx + 1} total={JS_CONTENT.length} />
       </div>
 
       <div className="px-4">
-        <LinuxQuestContent 
+        <QuestContent 
           key={currentStepIdx}
           currentStep={currentStep}
           isCompleted={isCompleted}
@@ -72,4 +71,4 @@ const LinuxModule: React.FC<Props> = ({ onCompleteStep, completedSteps, onNaviga
   );
 };
 
-export default LinuxModule;
+export default JsModule;

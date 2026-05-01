@@ -5,30 +5,36 @@ Menjadi platform "Fullstack Foundation" interaktif no. 1 untuk pengembang pemula
 
 ---
 
+## 💰 Strategi Monetisasi (Freemium)
+**Tujuan:** Memberikan akses gratis untuk fundamental, dan akses berbayar (murah/terjangkau) untuk materi lanjutan (Advanced).
+- [ ] **Sistem "Pro User":** Menambahkan status `isPro` pada data user di Firebase Firestore.
+- [ ] **Paywall UI:** Membuat popup/halaman khusus berlangganan saat user mencoba mengakses modul berlabel `[PRO]`.
+- [ ] **Payment Gateway:** Integrasi dengan payment gateway lokal (misal: Midtrans) untuk proses pembayaran otomatis.
+
+---
+
 ## 🏗️ Fase 1: Matangkan Fondasi (HTML Deep-Dive)
 **Tujuan:** Memastikan user benar-benar paham struktur web profesional.
-- [ ] **Semantic HTML:** Materi `<header>`, `<footer>`, `<main>`, `<article>`.
-- [ ] **Advanced Forms:** Radio buttons, checkbox groups, `<select>`, `<datalist>`.
-- [ ] **HTML Tables:** Data terstruktur dan atribut `colspan`/`rowspan`.
-- [ ] **Accessibility (A11y):** Atribut `aria-label`, `role`, dan penggunaan Alt text yang benar.
-- [ ] **SEO Basics:** Meta description, Open Graph, dan Favicon logic.
+- [x] **HTML Basics (Free):** Anatomi, Teks, List, Image, Form Dasar.
+- [ ] **Semantic HTML [PRO]:** Materi `<header>`, `<footer>`, `<main>`, `<article>`.
+- [ ] **Advanced Forms [PRO]:** Radio buttons, checkbox groups, `<select>`, `<datalist>`.
+- [ ] **SEO & Metadata [PRO]:** Meta description, Open Graph, dan Favicon logic.
 
 ## 🎨 Fase 2: Ekspansi CSS (Seni Menghias Web)
 **Tujuan:** Memberikan kemampuan styling yang modern dan responsif.
-- [ ] **The Box Model:** Margin, Border, Padding, Content.
-- [ ] **Selectors & Specificity:** Class vs ID vs Attribute selectors.
-- [ ] **Modern Layouts:** Flexbox & CSS Grid (Fundamental & Advanced).
-- [ ] **Responsive Design:** Media Queries & Fluid Typography.
-- [ ] **Custom Properties:** CSS Variables untuk tema Dark/Light.
-- [ ] **Animations:** `@keyframes` dan Transisi.
+- [x] **CSS Basics (Free):** Syntax dasar, Selector P, Background, Color.
+- [ ] **The Box Model [PRO]:** Margin, Border, Padding, Content.
+- [ ] **Modern Layouts [PRO]:** Flexbox & CSS Grid (Fundamental & Advanced).
+- [ ] **Responsive Design [PRO]:** Media Queries & Fluid Typography.
+- [ ] **Animations [PRO]:** `@keyframes` dan Transisi.
 
 ## 🧠 Fase 3: Ekspansi JavaScript (Logika & Interaksi)
 **Tujuan:** Memberikan "otak" pada website.
-- [ ] **Fundamentals:** Variabel (let/const), Tipe Data, Operator.
-- [ ] **Logic:** If/Else, Switch, Looping (For/While/Map).
-- [ ] **DOM Manipulation:** Memilih elemen, mengubah konten, mengubah style via JS.
-- [ ] **Event Listeners:** Klik, Ketik, Form Submit.
-- [ ] **Async JS:** Fetch API dasar (mengambil data JSON).
+- [x] **JS Basics (Free):** Variables, Console, Basic Data Types.
+- [ ] **Logic & Loops [PRO]:** If/Else, Switch, Looping (For/While/Map).
+- [ ] **DOM Manipulation [PRO]:** Memilih elemen, mengubah konten, mengubah style via JS.
+- [ ] **Event Listeners [PRO]:** Klik, Ketik, Form Submit.
+- [ ] **Async JS [PRO]:** Fetch API dasar (mengambil data JSON).
 
 ---
 

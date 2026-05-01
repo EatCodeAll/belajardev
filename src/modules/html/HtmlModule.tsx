@@ -12,8 +12,13 @@ interface Props {
 }
 
 const HtmlModule: React.FC<Props> = ({ onCompleteStep, completedSteps, onNavigate }) => {
-  const [currentStepIdx, setCurrentStepIdx] = useState(0);
-  const [showCongrats, setShowCongrats] = useState(false);
+  const [currentStepIdx, setCurrentStepIdx] = useState(() => {
+    const firstUncompleted = HTML_CONTENT.findIndex(s => !completedSteps.includes(s.id));
+    return firstUncompleted === -1 ? 0 : firstUncompleted;
+  });
+  const [showCongrats, setShowCongrats] = useState(() => {
+    return completedSteps.length === HTML_CONTENT.length && HTML_CONTENT.length > 0;
+  });
 
   const currentStep = HTML_CONTENT[currentStepIdx];
   const isCompleted = completedSteps.includes(currentStep.id);
