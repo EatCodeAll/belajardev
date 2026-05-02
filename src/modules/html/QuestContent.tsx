@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Editor from '../../components/Editor';
 import { Rocket, CheckCircle2, ChevronRight, BookOpen } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import DOMPurify from 'dompurify';
 
 import type { LearningStep } from '../../data/content';
 
@@ -148,7 +149,7 @@ const QuestContent: React.FC<QuestContentProps> = ({ currentStep, isCompleted, o
               <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-2">Live Preview</span>
            </div>
            <div className="flex-1 bg-white p-4 overflow-auto relative" id="preview-area">
-              <div dangerouslySetInnerHTML={{ __html: getScopedCode(code) }} />
+              <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(getScopedCode(code)) }} />
            </div>
         </div>
       </div>

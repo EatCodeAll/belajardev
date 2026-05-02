@@ -18,323 +18,381 @@ export interface LearningStep {
 export const HTML_CONTENT: LearningStep[] = [
   {
     id: 1,
-    title: "Anatomi Elemen HTML",
+    title: "Membangun Pondasi (Struktur Dasar)",
     materi: {
       paragraphs: [
-        "HTML (HyperText Markup Language) adalah tulang punggung setiap website.",
-        "Elemen HTML biasanya memiliki tag pembuka, isi, dan tag penutup. Contoh: <p>Halo Dunia</p>.",
-        "Deklarasi <!DOCTYPE html> di awal file sangat penting agar browser tahu kita menggunakan standar HTML5."
+        "Bayangkan HTML seperti kerangka sebuah rumah.",
+        "Setiap rumah butuh pondasi (<html>) dan ruangan untuk isi furniturnya (<body>).",
+        "Tag pembuka seperti pintu masuk <tag>, dan tag penutup seperti pintu keluar </tag>."
       ],
-      codeExample: "<tag>Isi konten di sini</tag>"
+      codeExample: "<html>\n  <body>\n    Isi rumah di sini\n  </body>\n</html>"
     },
     quest: {
-      instruction: "Lengkapi kerangka dasar website Anda. Tambahkan tag <html> dan di dalamnya tambahkan tag <body>.",
+      instruction: "Ayo buat pondasi rumah digitalmu! Tulis tag <html> dan di dalamnya masukkan tag <body>.",
       xp: 100,
       explanation: {
-        "<html>": "Elemen akar yang membungkus seluruh konten halaman.",
-        "<body>": "Wadah untuk semua konten yang akan terlihat di browser."
+        "<html>": "Pondasi utama yang membungkus seluruh website.",
+        "<body>": "Ruangan utama tempat kita menaruh semua konten yang bisa dilihat orang."
       },
-      initialCode: `<!DOCTYPE html>\n<!-- Tulis <html> dan <body> di bawah ini -->\n`,
-      validation: (code: string) => code.toLowerCase().includes('<html>') && code.toLowerCase().includes('</html>') && code.toLowerCase().includes('<body>') && code.toLowerCase().includes('</body>')
+      initialCode: `<!DOCTYPE html>\n<!-- 1. Tulis <html> di sini -->\n\n  <!-- 2. Masukkan <body> di dalam <html> -->\n\n<!-- 3. Jangan lupa tutup dengan </html> -->\n`,
+      validation: (code: string) => {
+        const lower = code.toLowerCase();
+        return lower.includes('<html>') && lower.includes('</html>') && lower.includes('<body>') && lower.includes('</body>') && lower.indexOf('<html>') < lower.indexOf('<body>') && lower.indexOf('</body>') < lower.indexOf('</html>');
+      }
     }
   },
   {
     id: 2,
-    title: "Judul yang Menarik (Headings)",
+    title: "Papan Nama Utama (Heading h1)",
     materi: {
       paragraphs: [
-        "Headings membantu pembaca memahami struktur halaman. HTML menyediakan enam tingkatan, dari <h1> sampai <h6>.",
-        "<h1> adalah yang paling besar dan penting."
+        "Setiap rumah butuh papan nama agar orang tahu rumah siapa itu.",
+        "Di HTML, kita gunakan <h1> untuk judul yang paling besar dan paling penting.",
+        "Gunakan h1 hanya satu kali per halaman, biasanya untuk judul utama."
       ],
-      codeExample: "<h1>Judul Utama</h1>"
+      codeExample: "<h1>Rumah Budi</h1>"
     },
     quest: {
-      instruction: "Buatlah judul utama website Anda menggunakan tag h1 dengan teks 'Halo Developer!'.",
+      instruction: "Pasang papan nama di rumahmu! Tambahkan tag <h1> dengan tulisan 'Halo Developer!' di dalam body.",
       xp: 120,
-      explanation: { "<h1>": "Heading level 1, digunakan untuk topik paling penting." },
-      initialCode: `<html>\n  <body>\n    <!-- Tambahkan h1 di sini -->\n  </body>\n</html>`,
-      validation: (code: string) => /<h1.*>.*Halo Developer!.*<\/h1>/i.test(code)
+      explanation: { "<h1>": "Heading level 1, judul paling besar di website." },
+      initialCode: `<html>\n  <body>\n    <!-- Pasang papan nama h1 kamu di bawah ini -->\n\n  </body>\n</html>`,
+      validation: (code: string) => /<h1.*>\s*Halo Developer!\s*<\/h1>/i.test(code)
     }
   },
   {
     id: 3,
-    title: "Paragraf & Teks",
+    title: "Menulis Cerita (Paragraf)",
     materi: {
-      paragraphs: ["Untuk menulis teks biasa atau narasi, kita menggunakan tag <p> (Paragraph)."],
-      codeExample: "<p>Ini adalah sebuah paragraf teks.</p>"
+      paragraphs: [
+        "Jika ingin menulis cerita atau penjelasan panjang, gunakan tag <p> (Paragraph).",
+        "Browser akan otomatis memberikan sedikit jarak antar paragraf agar enak dibaca."
+      ],
+      codeExample: "<p>Ini adalah sebuah paragraf.</p>"
     },
     quest: {
-      instruction: "Tambahkan paragraf di bawah judul h1 Anda dengan teks 'Saya sedang belajar coding.'.",
+      instruction: "Tuliskan satu kalimat perkenalan! Tambahkan tag <p> di bawah h1 dengan teks 'Saya sedang belajar coding.'.",
       xp: 100,
-      explanation: { "<p>": "Digunakan untuk membungkus blok teks atau paragraf." },
-      initialCode: `<html>\n  <body>\n    <h1>Halo Developer!</h1>\n    <!-- Tambahkan p di sini -->\n  </body>\n</html>`,
-      validation: (code: string) => /<p.*>.*Saya sedang belajar coding..*<\/p>/i.test(code)
+      explanation: { "<p>": "Tag untuk membungkus satu paragraf teks." },
+      initialCode: `<html>\n  <body>\n    <h1>Halo Developer!</h1>\n    <!-- Tulis perkenalanmu di sini menggunakan tag p -->\n\n  </body>\n</html>`,
+      validation: (code: string) => /<p.*>\s*Saya sedang belajar coding\.\s*<\/p>/i.test(code)
     }
   },
   {
     id: 4,
-    title: "Menonjolkan Kata",
+    title: "Memberi Penekanan (Strong)",
     materi: {
-      paragraphs: ["Gunakan <strong> untuk menebalkan kata agar lebih menonjol."],
-      codeExample: "<strong>Tebal</strong>"
+      paragraphs: [
+        "Terkadang ada kata yang ingin kita ucapkan dengan lebih kuat atau penting.",
+        "Gunakan tag <strong> untuk menebalkan teks tersebut."
+      ],
+      codeExample: "<p>Hari ini <strong>sangat</strong> panas!</p>"
     },
     quest: {
-      instruction: "Bungkus kata 'seru' dengan tag strong.",
+      instruction: "Tekankan kata 'seru'! Bungkus kata tersebut dengan tag <strong> agar terlihat tebal.",
       xp: 130,
-      explanation: { "<strong>": "Menebalkan teks." },
-      initialCode: `<html>\n  <body>\n    <p>Belajar itu seru!</p>\n  </body>\n</html>`,
-      validation: (code: string) => /<strong>.*seru.*<\/strong>/i.test(code)
+      explanation: { "<strong>": "Tag untuk menebalkan teks yang dianggap penting." },
+      initialCode: `<html>\n  <body>\n    <p>Belajar coding itu seru!</p>\n  </body>\n</html>`,
+      validation: (code: string) => /<strong>\s*seru\s*<\/strong>/i.test(code)
     }
   },
   {
     id: 5,
-    title: "Daftar Tak Terurut",
+    title: "Daftar Belanja (Unordered List)",
     materi: {
-      paragraphs: ["Gunakan <ul> dan <li> untuk membuat daftar poin-poin."],
-      codeExample: "<ul>\n  <li>Item</li>\n</ul>"
+      paragraphs: [
+        "Untuk membuat daftar poin-poin (bullet points), kita gunakan <ul> (Unordered List).",
+        "Setiap item di dalamnya harus dibungkus dengan tag <li> (List Item)."
+      ],
+      codeExample: "<ul>\n  <li>Kopi</li>\n  <li>Gula</li>\n</ul>"
     },
     quest: {
-      instruction: "Buat daftar <ul> dan tambahkan satu <li> dengan teks 'HTML'.",
+      instruction: "Buat daftar skill! Buat tag <ul> dan di dalamnya tambahkan satu <li> dengan tulisan 'HTML'.",
       xp: 150,
-      explanation: { "<ul>": "Unordered List.", "<li>": "List Item." },
-      initialCode: `<html>\n  <body>\n    <!-- Buat ul dan li di sini -->\n  </body>\n</html>`,
-      validation: (code: string) => /<ul>\s*<li.*>.*HTML.*<\/li>\s*<\/ul>/i.test(code)
+      explanation: { 
+        "<ul>": "Wadah untuk daftar poin tanpa nomor.",
+        "<li>": "Satu butir/item di dalam daftar."
+      },
+      initialCode: `<html>\n  <body>\n    <!-- 1. Buat ul di sini -->\n      <!-- 2. Masukkan li di dalam ul -->\n  </body>\n</html>`,
+      validation: (code: string) => /<ul>\s*<li.*>\s*HTML\s*<\/li>\s*<\/ul>/i.test(code)
     }
   },
   {
     id: 6,
-    title: "Daftar Berurutan (Ordered List)",
+    title: "Langkah Demi Langkah (Ordered List)",
     materi: {
       paragraphs: [
-        "Jika urutan itu sangat penting, gunakan <ol> (Ordered List).",
-        "Elemen ini akan otomatis memberikan penomoran (1, 2, 3...) di depan setiap item."
+        "Jika urutan sangat penting (seperti resep masakan), gunakan <ol> (Ordered List).",
+        "Bedanya dengan <ul>, daftar ini akan otomatis memberikan nomor (1, 2, 3...) di depannya."
       ],
-      codeExample: "<ol>\n  <li>Langkah Satu</li>\n</ol>"
+      codeExample: "<ol>\n  <li>Siapkan Air</li>\n  <li>Rebus Air</li>\n</ol>"
     },
     quest: {
-      instruction: "Buatlah daftar berurutan <ol> dan tambahkan satu item <li> dengan teks 'Langkah 1'.",
+      instruction: "Buatlah daftar langkah belajar! Tambahkan tag <ol> dan di dalamnya masukkan satu <li> dengan tulisan 'Langkah 1'.",
       xp: 150,
       explanation: { 
-        "<ol>": "Ordered List, wadah untuk daftar bernomor.",
-        "<li>": "List Item, elemen untuk setiap butir daftar."
+        "<ol>": "Wadah untuk daftar yang memiliki urutan/nomor.",
+        "<li>": "Item atau butir dalam daftar tersebut."
       },
-      initialCode: `<html>\n  <body>\n    <!-- Buat daftar berurutan di bawah ini -->\n\n  </body>\n</html>`,
-      validation: (code: string) => /<ol>\s*<li.*>.*Langkah 1.*<\/li>\s*<\/ol>/i.test(code)
+      initialCode: `<html>\n  <body>\n    <!-- Buat daftar berurutan (ol) di bawah ini -->\n\n  </body>\n</html>`,
+      validation: (code: string) => /<ol>\s*<li.*>\s*Langkah 1\s*<\/li>\s*<\/ol>/i.test(code)
     }
   },
   {
     id: 7,
-    title: "Menampilkan Gambar",
+    title: "Menambahkan Foto (Images)",
     materi: {
       paragraphs: [
-        "Gunakan tag <img> untuk visual. Tag ini unik karena 'Self-Closing'.",
-        "Atribut 'src' adalah alamat gambar, dan 'alt' adalah teks alternatif."
+        "Website akan membosankan tanpa gambar. Gunakan tag <img> untuk menampilkannya.",
+        "Tag ini spesial karena tidak punya tag penutup. Kita cuma butuh 'src' (sumber foto) dan 'alt' (cerita singkat jika foto gagal muncul)."
       ],
-      codeExample: '<img src="https://picsum.photos/200" alt="Foto">'
+      codeExample: '<img src="foto.jpg" alt="Deskripsi Foto">'
     },
     quest: {
-      instruction: "Tampilkan gambar dengan src 'https://picsum.photos/200' dan alt 'Random Image'.",
+      instruction: "Pasang foto profil digitalmu! Gunakan tag <img> dengan src 'https://picsum.photos/200' dan alt 'Foto Random'.",
       xp: 180,
-      explanation: { "src": "Source alamat gambar.", "alt": "Teks deskripsi gambar." },
-      initialCode: `<html>\n  <body>\n    <!-- Tambahkan tag img di bawah ini -->\n\n  </body>\n</html>`,
-      validation: (code: string) => /<img.*src="https:\/\/picsum\.photos\/200".*alt="Random Image"/i.test(code)
+      explanation: { 
+        "src": "Singkatan dari Source, yaitu alamat/link foto.",
+        "alt": "Teks alternatif untuk membantu aksesibilitas."
+      },
+      initialCode: `<html>\n  <body>\n    <!-- Masukkan tag img di bawah ini -->\n\n  </body>\n</html>`,
+      validation: (code: string) => /<img.*src="https:\/\/picsum\.photos\/200".*alt="Foto Random"/i.test(code)
     }
   },
   {
     id: 8,
-    title: "Tautan (Hyperlinks)",
+    title: "Pintu Ke Dunia Luar (Links)",
     materi: {
       paragraphs: [
-        "Tautan dibuat menggunakan tag <a>.",
-        "Gunakan atribut 'href' untuk menentukan alamat tujuan link."
+        "Link adalah inti dari web (Hyperlink). Gunakan tag <a> untuk membuat teks yang bisa diklik.",
+        "Gunakan atribut 'href' untuk memberi tahu browser ke mana link itu harus pergi."
       ],
-      codeExample: '<a href="https://google.com">Google</a>'
+      codeExample: '<a href="https://google.com">Klik ke Google</a>'
     },
     quest: {
-      instruction: "Buat link ke 'https://github.com' dengan teks 'Profil Saya'.",
+      instruction: "Buat pintu ke Github! Tambahkan tag <a> dengan href 'https://github.com' dan teks 'Profil Saya'.",
       xp: 160,
-      explanation: { "<a>": "Anchor tag.", "href": "Alamat tujuan link." },
-      initialCode: `<html>\n  <body>\n    <!-- Buat link ke Github di bawah ini -->\n\n  </body>\n</html>`,
-      validation: (code: string) => /<a.*href="https:\/\/github\.com".*>.*Profil Saya.*<\/a>/i.test(code)
+      explanation: { 
+        "<a>": "Anchor, tag untuk membuat link.",
+        "href": "Alamat tujuan link tersebut."
+      },
+      initialCode: `<html>\n  <body>\n    <!-- Buat link ke Github kamu di bawah ini -->\n\n  </body>\n</html>`,
+      validation: (code: string) => /<a.*href="https:\/\/github\.com".*>\s*Profil Saya\s*<\/a>/i.test(code)
     }
   },
   {
     id: 9,
-    title: "Input Teks Dasar",
+    title: "Kotak Surat (Input Teks)",
     materi: {
-      paragraphs: ["Gunakan <input type='text'> untuk kotak ketik satu baris."],
-      codeExample: '<input type="text" placeholder="Nama">'
+      paragraphs: [
+        "Ingin user mengetikkan sesuatu? Gunakan <input>.",
+        "Atribut 'placeholder' adalah teks abu-abu yang menghilang saat kita mulai mengetik."
+      ],
+      codeExample: '<input type="text" placeholder="Ketik nama...">'
     },
     quest: {
-      instruction: "Buatlah input teks dengan placeholder 'Username'.",
+      instruction: "Siapkan kolom nama! Buat tag <input> dengan type 'text' dan placeholder 'Username'.",
       xp: 140,
-      explanation: { "placeholder": "Teks bantuan di dalam kotak input." },
-      initialCode: `<html>\n  <body>\n    <p>Masuk:</p>\n    <!-- Tambahkan input di sini -->\n\n  </body>\n</html>`,
+      explanation: { "placeholder": "Pesan bantuan yang muncul di dalam kotak input." },
+      initialCode: `<html>\n  <body>\n    <p>Siapa namamu?</p>\n    <!-- Tambahkan kotak input di bawah ini -->\n\n  </body>\n</html>`,
       validation: (code: string) => /<input.*type="text".*placeholder="Username"/i.test(code)
     }
   },
   {
     id: 10,
-    title: "Membuat Tombol",
+    title: "Tombol Aksi (Buttons)",
     materi: {
-      paragraphs: ["Gunakan tag <button> untuk membuat tombol yang bisa diklik."],
-      codeExample: "<button>Kirim</button>"
+      paragraphs: [
+        "Setiap formulir butuh tombol untuk mengirim data. Gunakan tag <button>.",
+        "Teks yang berada di antara <button> dan </button> akan muncul di atas tombol."
+      ],
+      codeExample: "<button>Klik Aku</button>"
     },
     quest: {
-      instruction: "Tambahkan sebuah tombol dengan teks 'Kirim'.",
+      instruction: "Buat tombol untuk mengirim! Tambahkan tag <button> dengan tulisan 'Kirim'.",
       xp: 120,
-      explanation: { "<button>": "Tag tombol interaktif." },
-      initialCode: `<html>\n  <body>\n    <input type="text">\n    <!-- Tambahkan tombol di sini -->\n\n  </body>\n</html>`,
-      validation: (code: string) => /<button.*>.*Kirim.*<\/button>/i.test(code)
+      explanation: { "<button>": "Tag untuk membuat tombol yang bisa diklik." },
+      initialCode: `<html>\n  <body>\n    <input type="text" placeholder="Nama">\n    <!-- Buat tombol Kirim di bawah ini -->\n\n  </body>\n</html>`,
+      validation: (code: string) => /<button.*>\s*Kirim\s*<\/button>/i.test(code)
     }
   },
   {
     id: 11,
-    title: "Wadah Konten (Div)",
+    title: "Kotak Pembungkus (Div)",
     materi: {
-      paragraphs: ["Elemen <div> adalah wadah paling populer untuk mengelompokkan elemen."],
-      codeExample: "<div>\n  <p>Grup</p>\n</div>"
+      paragraphs: [
+        "<div> adalah elemen yang paling sering digunakan. Ia berfungsi seperti 'kotak kosong' untuk mengelompokkan elemen lain agar rapi.",
+        "Bayangkan div seperti sebuah paket yang berisi beberapa barang."
+      ],
+      codeExample: "<div>\n  <h1>Judul</h1>\n  <p>Isi</p>\n</div>"
     },
     quest: {
-      instruction: "Bungkus h2 'Card Title' dan p 'Card Text' menggunakan tag <div>.",
+      instruction: "Kelompokkan elemen! Bungkus h2 'Judul Kartu' dan p 'Deskripsi Kartu' dengan tag <div>.",
       xp: 150,
-      explanation: { "<div>": "Wadah generik pembungkus." },
-      initialCode: `<html>\n  <body>\n    <!-- Bungkus elemen di bawah dengan div -->\n    <h2>Card Title</h2>\n    <p>Card Text</p>\n  </body>\n</html>`,
+      explanation: { "<div>": "Wadah atau kotak untuk mengelompokkan elemen-elemen." },
+      initialCode: `<html>\n  <body>\n    <!-- Bungkus h2 dan p di bawah dengan satu buah div -->\n    <h2>Judul Kartu</h2>\n    <p>Deskripsi Kartu</p>\n  </body>\n</html>`,
       validation: (code: string) => /<div>\s*<h2.*>.*<\/h2>\s*<p.*>.*<\/p>\s*<\/div>/i.test(code)
     }
   },
   {
     id: 12,
-    title: "Sentuhan Inline (Span)",
+    title: "Pemberi Warna (Span)",
     materi: {
-      paragraphs: ["<span> digunakan untuk membungkus potongan kecil teks di dalam kalimat."],
-      codeExample: "<p>Halo <span>User</span></p>"
+      paragraphs: [
+        "Jika <div> membungkus kotak besar, <span> digunakan untuk membungkus kata atau kalimat di dalam paragraf.",
+        "Cocok digunakan jika ingin mengubah warna satu kata saja."
+      ],
+      codeExample: "<p>Halo <span style='color:blue'>Dunia</span></p>"
     },
     quest: {
-      instruction: "Bungkus kata 'Gratis' menggunakan tag <span>.",
+      instruction: "Tandai kata 'Gratis'! Bungkus kata 'Gratis' menggunakan tag <span>.",
       xp: 130,
-      explanation: { "<span>": "Wadah teks inline." },
-      initialCode: `<html>\n  <body>\n    <p>Layanan ini Gratis selamanya.</p>\n  </body>\n</html>`,
-      validation: (code: string) => /<span>.*Gratis.*<\/span>/i.test(code)
+      explanation: { "<span>": "Wadah kecil untuk membungkus teks di dalam baris yang sama." },
+      initialCode: `<html>\n  <body>\n    <p>Belajar di sini itu Gratis selamanya.</p>\n  </body>\n</html>`,
+      validation: (code: string) => /<span>\s*Gratis\s*<\/span>/i.test(code)
     }
   },
   {
     id: 13,
-    title: "Input Khusus Email",
+    title: "Alamat Surat Elektronik (Email)",
     materi: {
-      paragraphs: ["Gunakan `type='email'` untuk input alamat email yang valid."],
+      paragraphs: [
+        "Untuk keamanan, HTML punya input khusus untuk email. Browser akan mengecek apakah ada simbol '@' di dalamnya.",
+        "Gunakan `type='email'` pada tag input."
+      ],
       codeExample: '<input type="email">'
     },
     quest: {
-      instruction: "Buatlah satu elemen input dengan type 'email'.",
+      instruction: "Minta email user! Buat satu tag <input> dengan type 'email'.",
       xp: 140,
-      explanation: { "type='email'": "Validasi email otomatis." },
-      initialCode: `<html>\n  <body>\n    <p>Email:</p>\n    <!-- Input email di sini -->\n\n  </body>\n</html>`,
+      explanation: { "type='email'": "Membantu validasi format email secara otomatis." },
+      initialCode: `<html>\n  <body>\n    <p>Masukkan Email Kamu:</p>\n    <!-- Buat input email di bawah ini -->\n\n  </body>\n</html>`,
       validation: (code: string) => /<input.*type="email"/i.test(code)
     }
   },
   {
     id: 14,
-    title: "Input Password",
+    title: "Rahasia Terjaga (Password)",
     materi: {
-      paragraphs: ["Gunakan `type='password'` agar karakter yang diketik user disamarkan."],
+      paragraphs: [
+        "Jangan biarkan orang lain melihat password saat diketik! Gunakan `type='password'`.",
+        "Karakter yang diketik akan otomatis berubah menjadi titik-titik atau bintang."
+      ],
       codeExample: '<input type="password">'
     },
     quest: {
-      instruction: "Tambahkan input dengan type 'password'.",
+      instruction: "Buat kotak sandi! Tambahkan tag <input> dengan type 'password'.",
       xp: 140,
-      explanation: { "type='password'": "Menyembunyikan teks input." },
-      initialCode: `<html>\n  <body>\n    <p>Sandi:</p>\n    <!-- Input sandi di sini -->\n\n  </body>\n</html>`,
+      explanation: { "type='password'": "Menyembunyikan teks yang diketik agar aman." },
+      initialCode: `<html>\n  <body>\n    <p>Kata Sandi:</p>\n    <!-- Buat input password di bawah ini -->\n\n  </body>\n</html>`,
       validation: (code: string) => /<input.*type="password"/i.test(code)
     }
   },
   {
     id: 15,
-    title: "Checkboxes",
+    title: "Memilih Pilihan (Checkboxes)",
     materi: {
-      paragraphs: ["Checkbox memungkinkan pengguna untuk memilih satu atau banyak opsi."],
-      codeExample: '<input type="checkbox"> Pilihan'
+      paragraphs: [
+        "Checkbox digunakan saat user boleh memilih satu atau lebih dari banyak pilihan (seperti memilih hobi).",
+        "Gunakan `type='checkbox'` pada tag input."
+      ],
+      codeExample: '<input type="checkbox"> Saya Setuju'
     },
     quest: {
-      instruction: "Buat sebuah checkbox yang diikuti teks 'Ingat Saya'.",
+      instruction: "Minta persetujuan user! Buat tag <input> dengan type 'checkbox' dan ikuti dengan teks 'Ingat Saya'.",
       xp: 130,
-      explanation: { "checkbox": "Input centang." },
-      initialCode: `<html>\n  <body>\n    <!-- Checkbox di sini -->\n\n  </body>\n</html>`,
+      explanation: { "checkbox": "Input centang untuk memilih banyak opsi." },
+      initialCode: `<html>\n  <body>\n    <!-- Buat checkbox di sini -->\n\n  </body>\n</html>`,
       validation: (code: string) => /<input.*type="checkbox"/i.test(code)
     }
   },
   {
     id: 16,
-    title: "Area Teks (Textarea)",
+    title: "Pesan Panjang (Textarea)",
     materi: {
-      paragraphs: ["Gunakan <textarea> untuk input pesan yang panjang."],
-      codeExample: '<textarea></textarea>'
+      paragraphs: [
+        "Kadang satu baris input tidak cukup (misal untuk komentar atau saran).",
+        "Gunakan tag <textarea> untuk kotak ketik yang bisa memuat banyak baris."
+      ],
+      codeExample: "<textarea>Isi pesan...</textarea>"
     },
     quest: {
-      instruction: "Buat elemen textarea dengan pesan awal 'Tulis di sini...'.",
+      instruction: "Sediakan ruang curhat! Buat tag <textarea> dengan tulisan di dalamnya 'Tulis pesanmu...'.",
       xp: 160,
-      explanation: { "<textarea>": "Input teks multi-baris." },
-      initialCode: `<html>\n  <body>\n    <p>Pesan:</p>\n    <!-- Textarea di sini -->\n\n  </body>\n</html>`,
-      validation: (code: string) => /<textarea.*>.*Tulis di sini.*<\/textarea>/i.test(code)
+      explanation: { "<textarea>": "Kotak input teks yang luas dan bisa ditarik ukurannya." },
+      initialCode: `<html>\n  <body>\n    <p>Saran Kamu:</p>\n    <!-- Buat textarea di bawah ini -->\n\n  </body>\n</html>`,
+      validation: (code: string) => /<textarea.*>\s*Tulis pesanmu\.\.\.\s*<\/textarea>/i.test(code)
     }
   },
   {
     id: 17,
-    title: "Identitas Tab (Title)",
+    title: "Nama Di Atas (Title)",
     materi: {
-      paragraphs: ["Tag <title> menentukan teks yang muncul di tab browser. Letakkan di dalam <head>."],
-      codeExample: "<head><title>Web</title></head>"
+      paragraphs: [
+        "Tag <title> digunakan untuk memberi nama pada tab browser kamu.",
+        "Penting: Tag ini harus diletakkan di dalam tag <head>, bukan di dalam <body>."
+      ],
+      codeExample: "<html>\n  <head>\n    <title>Judul Tab</title>\n  </head>\n</html>"
     },
     quest: {
-      instruction: "Tambahkan <title> dengan teks 'Belajar HTML' di dalam <head>.",
+      instruction: "Beri nama tab websitemu! Tambahkan tag <title> dengan teks 'Belajar HTML' di dalam <head>.",
       xp: 120,
-      explanation: { "<title>": "Judul tab browser." },
-      initialCode: `<html>\n  <head>\n    <!-- Title di sini -->\n\n  </head>\n  <body></body>\n</html>`,
-      validation: (code: string) => /<title.*>.*Belajar HTML.*<\/title>/i.test(code)
+      explanation: { "<title>": "Identitas website yang muncul di paling atas browser." },
+      initialCode: `<html>\n  <head>\n    <!-- Tulis tag title kamu di sini -->\n\n  </head>\n  <body></body>\n</html>`,
+      validation: (code: string) => /<title.*>\s*Belajar HTML\s*<\/title>/i.test(code)
     }
   },
   {
     id: 18,
-    title: "Memutar Video",
+    title: "Bioskop Digital (Video)",
     materi: {
-      paragraphs: ["Gunakan tag <video> dengan atribut `controls` untuk memutar video."],
-      codeExample: '<video src="v.mp4" controls></video>'
+      paragraphs: [
+        "Kamu bisa memutar video langsung di web! Gunakan tag <video>.",
+        "Jangan lupa tambahkan kata 'controls' agar tombol play, pause, dan volume muncul."
+      ],
+      codeExample: '<video src="movie.mp4" controls></video>'
     },
     quest: {
-      instruction: "Tampilkan video dengan atribut 'controls'.",
+      instruction: "Pasang pemutar video! Buat tag <video> dan tambahkan atribut 'controls'.",
       xp: 200,
-      explanation: { "controls": "Tombol kontrol video." },
-      initialCode: `<html>\n  <body>\n    <!-- Video di sini -->\n\n  </body>\n</html>`,
+      explanation: { "controls": "Menampilkan tombol navigasi video (Play, Pause, Stop)." },
+      initialCode: `<html>\n  <body>\n    <!-- Masukkan tag video di sini -->\n\n  </body>\n</html>`,
       validation: (code: string) => /<video.*controls/i.test(code)
     }
   },
   {
     id: 19,
-    title: "Catatan (Comments)",
+    title: "Catatan Rahasia (Comments)",
     materi: {
-      paragraphs: ["Komentar diabaikan oleh browser. Sintaksnya: <!-- Pesan -->."],
-      codeExample: "<!-- Komentar -->"
+      paragraphs: [
+        "Komentar adalah catatan untuk developer yang tidak akan muncul di layar browser.",
+        "Sangat berguna untuk memberi pengingat pada diri sendiri atau tim."
+      ],
+      codeExample: "<!-- Ini adalah sebuah komentar -->"
     },
     quest: {
-      instruction: "Buatlah sebuah komentar HTML dengan teks 'Selesai'.",
+      instruction: "Tinggalkan catatan! Buat sebuah komentar HTML dengan tulisan 'Misi Selesai'.",
       xp: 100,
-      explanation: { "<!-- -->": "Sintaks komentar." },
-      initialCode: `<html>\n  <body>\n    <!-- Tulis komentar di sini -->\n\n  </body>\n</html>`,
-      validation: (code: string) => /<!--.*Selesai.*-->/.test(code)
+      explanation: { "<!-- -->": "Simbol pembuka dan penutup komentar di HTML." },
+      initialCode: `<html>\n  <body>\n    <!-- Tulis komentarmu di bawah ini -->\n\n  </body>\n</html>`,
+      validation: (code: string) => /<!--\s*Misi Selesai\s*-->/i.test(code)
     }
   },
   {
     id: 20,
-    title: "Tantangan Final: Kartu Nama",
+    title: "Tantangan Terakhir: Kartu Identitas",
     materi: {
-      paragraphs: ["Buat struktur 'Kartu Nama' menggunakan <div>, <h1>, dan <p>."],
-      codeExample: "<div><h1>Nama</h1><p>Bio</p></div>"
+      paragraphs: [
+        "Selamat! Kamu sudah sampai di akhir perjalanan HTML.",
+        "Saatnya menggabungkan semuanya: gunakan <div> sebagai kotak, h1 sebagai nama, dan p sebagai jabatan."
+      ],
+      codeExample: "<div>\n  <h1>Nama</h1>\n  <p>Jabatan</p>\n</div>"
     },
     quest: {
-      instruction: "Gunakan <div> untuk membungkus judul h1 dan paragraf p.",
+      instruction: "Buatlah kartu identitasmu! Gunakan <div> untuk membungkus sebuah h1 dan sebuah p.",
       xp: 300,
-      explanation: { "Final": "Gabungan container, heading, dan paragraph." },
-      initialCode: `<html>\n  <body>\n    <!-- Kartu Nama di sini -->\n\n  </body>\n</html>`,
+      explanation: { "Final": "Menggabungkan kotak (container), judul, dan teks." },
+      initialCode: `<html>\n  <body>\n    <!-- Ayo tunjukkan kemampuanmu di sini! -->\n\n  </body>\n</html>`,
       validation: (code: string) => /<div>\s*<h[12].*>.*<\/h[12]>\s*<p.*>.*<\/p>\s*<\/div>/i.test(code)
     }
   }
